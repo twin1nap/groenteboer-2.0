@@ -1,0 +1,8 @@
+what to keep from Original project, forms have no sql code exept form1, dont need to touch anything but form1
+from1 just has get.
+
+classlibrary:
+passtrough string connectionString
+
+folder models for classes, class data for sql code.
+
