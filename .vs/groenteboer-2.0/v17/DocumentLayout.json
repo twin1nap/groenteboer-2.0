@@ -11,16 +11,16 @@
       "RelativeMoniker": "D:0:0:{9282730E-9DB7-45E7-AB7C-FFDF3DDC705D}|groenteboer app\\groenteboer app.csproj|solutionrelative:groenteboer app\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9282730E-9DB7-45E7-AB7C-FFDF3DDC705D}|groenteboer app\\groenteboer app.csproj|c:\\users\\joran\\documents\\github\\groenteboer-2.0\\groenteboer app\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{9282730E-9DB7-45E7-AB7C-FFDF3DDC705D}|groenteboer app\\groenteboer app.csproj|solutionrelative:groenteboer app\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E7392F06-0DC6-4708-9F7E-2804746B495C}|ClassLibraryDb\\ClassLibraryDb.csproj|c:\\users\\joran\\documents\\github\\groenteboer-2.0\\classlibrarydb\\models\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E7392F06-0DC6-4708-9F7E-2804746B495C}|ClassLibraryDb\\ClassLibraryDb.csproj|solutionrelative:classlibrarydb\\models\\products.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E7392F06-0DC6-4708-9F7E-2804746B495C}|ClassLibraryDb\\ClassLibraryDb.csproj|c:\\users\\joran\\documents\\github\\groenteboer-2.0\\classlibrarydb\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E7392F06-0DC6-4708-9F7E-2804746B495C}|ClassLibraryDb\\ClassLibraryDb.csproj|solutionrelative:classlibrarydb\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9282730E-9DB7-45E7-AB7C-FFDF3DDC705D}|groenteboer app\\groenteboer app.csproj|c:\\users\\joran\\documents\\github\\groenteboer-2.0\\groenteboer app\\productpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9282730E-9DB7-45E7-AB7C-FFDF3DDC705D}|groenteboer app\\groenteboer app.csproj|solutionrelative:groenteboer app\\productpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9282730E-9DB7-45E7-AB7C-FFDF3DDC705D}|groenteboer app\\groenteboer app.csproj|c:\\users\\joran\\documents\\github\\groenteboer-2.0\\groenteboer app\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{9282730E-9DB7-45E7-AB7C-FFDF3DDC705D}|groenteboer app\\groenteboer app.csproj|solutionrelative:groenteboer app\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,13 +34,13 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "products.cs",
-              "DocumentMoniker": "C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\ClassLibraryDb\\models\\products.cs",
-              "RelativeDocumentMoniker": "ClassLibraryDb\\models\\products.cs",
-              "ToolTip": "C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\ClassLibraryDb\\models\\products.cs",
-              "RelativeToolTip": "ClassLibraryDb\\models\\products.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAZAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\ClassLibraryDb\\models\\Product.cs",
+              "RelativeDocumentMoniker": "ClassLibraryDb\\models\\Product.cs",
+              "ToolTip": "C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\ClassLibraryDb\\models\\Product.cs",
+              "RelativeToolTip": "ClassLibraryDb\\models\\Product.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-13T15:22:31.515Z",
               "EditorCaption": ""
@@ -51,9 +51,9 @@
               "Title": "data.cs",
               "DocumentMoniker": "C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\ClassLibraryDb\\data.cs",
               "RelativeDocumentMoniker": "ClassLibraryDb\\data.cs",
-              "ToolTip": "C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\ClassLibraryDb\\data.cs",
-              "RelativeToolTip": "ClassLibraryDb\\data.cs",
-              "ViewState": "AgIAADYAAAAAAAAAAAAYwHYAAAALAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\ClassLibraryDb\\data.cs*",
+              "RelativeToolTip": "ClassLibraryDb\\data.cs*",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAawFMAAABJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-13T13:09:56.299Z",
               "EditorCaption": ""
@@ -66,14 +66,14 @@
               "RelativeDocumentMoniker": "groenteboer app\\Form1.cs",
               "ToolTip": "C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\groenteboer app\\Form1.cs",
               "RelativeToolTip": "groenteboer app\\Form1.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAmwDwAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAA8AAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-13T12:38:19.239Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\groenteboer app\\Form1.cs",
               "RelativeDocumentMoniker": "groenteboer app\\Form1.cs",
@@ -85,13 +85,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "ProductPanel.cs",
               "DocumentMoniker": "C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\groenteboer app\\ProductPanel.cs",
               "RelativeDocumentMoniker": "groenteboer app\\ProductPanel.cs",
               "ToolTip": "C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\groenteboer app\\ProductPanel.cs",
               "RelativeToolTip": "groenteboer app\\ProductPanel.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEMAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-13T15:22:50.505Z",
               "EditorCaption": ""

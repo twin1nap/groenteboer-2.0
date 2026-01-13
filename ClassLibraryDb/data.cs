@@ -81,7 +81,7 @@ namespace ClassLibraryDb
                                 PriceType = reader.GetBoolean("priceType"),
                                 ProductPrijs = reader.GetDecimal("price"),
                                 ProductImage = image,
-                                category = reader.GetInt32("category"),
+                                categoryId = reader.GetInt32("Category_id"),
                             };
                             products.Add(product);
 

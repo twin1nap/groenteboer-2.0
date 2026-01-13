@@ -11,13 +11,16 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
+using ClassLibraryDb;
+using ClassLibraryDb.models;
+//using MySql.Data.MySqlClient;
 using Org.BouncyCastle.Math;
 
 namespace groenteboer_app
 {
     public partial class FormGroenteboer : Form
     {
+        private string connectionstring = "server=localhost;database=groenteboer; user=root; password=";
         private decimal _total;
 
         decimal total
@@ -57,8 +60,40 @@ namespace groenteboer_app
             flowLayoutPanelAndere.Controls.Clear();
 
 
-            string connectionstring = "server=localhost;database=groenteboer; user=root; password=";
             
+            List<Product> products = new List<Product>();
+            data db = new data(connectionstring);
+
+            products = db.GetAllProducts();
+            foreach (Product product in products)
+            {
+                ProductPanel productPanel = new ProductPanel
+                {
+                    productdata = product
+                };
+                productPanel.Click += button_Product_Click;
+                FlowLayoutPanel flowLayoutPanel;
+                if (productPanel.productdata.categoryId == 1)
+                {
+                    flowLayoutPanel = flowLayoutPanelGroente;
+                }
+                else if (productPanel.productdata.categoryId == 2)
+                {
+                    flowLayoutPanel = flowLayoutPanelFruit;
+                }
+                else if ((productPanel.productdata.categoryId == 3))
+                {
+                    flowLayoutPanel = flowLayoutSmoothie;
+                }
+                else if (productPanel.productdata.categoryId == 4)
+                {
+                    flowLayoutPanel = flowLayoutPanelAndere;
+                }
+                else { flowLayoutPanel = flowLayoutPanelAndere; }
+                flowLayoutPanel.Controls.Add(productPanel);
+
+            }
+
         }
 
         private void button_Product_Click(object sender, EventArgs e)
@@ -69,7 +104,7 @@ namespace groenteboer_app
             //ListBoxBon.Items.Add($"{product.ProductNaam} | {product.ProductPrijs:C2}");
             //total += product.ProductPrijs;
             decimal amount;
-            if (product.PriceType)
+            if (product.productdata.PriceType)
             {
                 Numpad numpad = new Numpad();
                 if (numpad.ShowDialog() == DialogResult.OK)
@@ -116,15 +151,15 @@ namespace groenteboer_app
             {
                 ProductPanel key = item.Key;
                 decimal amount = item.Value;
-                if (key.PriceType)
+                if (key.productdata.PriceType)
                 {
-                    ListBoxBon.Items.Add($"{amount} kilo \t {key.ProductNaam}({key.ProductPrijs:C2} per kilo) | {(key.ProductPrijs * amount):C2} ");
+                    ListBoxBon.Items.Add($"{amount} kilo \t {key.productdata.ProductNaam}({key.productdata.ProductPrijs:C2} per kilo) | {(key.productdata.ProductPrijs * amount):C2} ");
                 }
                 else
                 {
-                    ListBoxBon.Items.Add($"{amount}X \t {key.ProductNaam}({key.ProductPrijs:C2}) | {(key.ProductPrijs * amount):C2} ");
+                    ListBoxBon.Items.Add($"{amount}X \t {key.productdata.ProductNaam}({key.productdata.ProductPrijs:C2}) | {(key.productdata.ProductPrijs * amount):C2} ");
                 }
-                total += key.ProductPrijs * amount;
+                total += key.productdata.ProductPrijs * amount;
             }
         }
 
@@ -143,7 +178,7 @@ namespace groenteboer_app
                 //Match match = Regex.Match(line, @"^\d+X\s+(.*?)\(");
                 foreach (ProductPanel item in BonData.Keys)
                 {
-                    if (item.ProductNaam == name)
+                    if (item.productdata.ProductNaam == name)
                     {
                         //new Form { BackgroundImage = item.ProductImage, Size = new Size(400, 300) }.ShowDialog();
                         BonData.Remove(item);

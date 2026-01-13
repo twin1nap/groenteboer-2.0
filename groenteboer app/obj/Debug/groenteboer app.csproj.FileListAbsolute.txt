@@ -92,3 +92,6 @@ C:\Users\joran\Documents\GitHub\groenteboer-2.0\groenteboer app\obj\Debug\groent
 C:\Users\joran\Documents\GitHub\groenteboer-2.0\groenteboer app\obj\Debug\groenteb.066CDA96.Up2Date
 C:\Users\joran\Documents\GitHub\groenteboer-2.0\groenteboer app\obj\Debug\groenteboer app.exe
 C:\Users\joran\Documents\GitHub\groenteboer-2.0\groenteboer app\obj\Debug\groenteboer app.pdb
+C:\Users\joran\Documents\GitHub\groenteboer-2.0\groenteboer app\bin\Debug\ClassLibraryDb.dll
+C:\Users\joran\Documents\GitHub\groenteboer-2.0\groenteboer app\bin\Debug\ClassLibraryDb.pdb
+C:\Users\joran\Documents\GitHub\groenteboer-2.0\groenteboer app\bin\Debug\ClassLibraryDb.dll.config
