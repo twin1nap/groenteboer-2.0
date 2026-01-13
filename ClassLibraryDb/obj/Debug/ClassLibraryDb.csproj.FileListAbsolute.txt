@@ -1,0 +1,12 @@
+C:\Users\joran\Documents\GitHub\groenteboer-2.0\ClassLibraryDb\bin\Debug\ClassLibraryDb.dll
+C:\Users\joran\Documents\GitHub\groenteboer-2.0\ClassLibraryDb\bin\Debug\ClassLibraryDb.pdb
+C:\Users\joran\Documents\GitHub\groenteboer-2.0\ClassLibraryDb\bin\Debug\System.Data.SqlClient.dll
+C:\Users\joran\Documents\GitHub\groenteboer-2.0\ClassLibraryDb\bin\Debug\System.Drawing.Common.dll
+C:\Users\joran\Documents\GitHub\groenteboer-2.0\ClassLibraryDb\bin\Debug\System.Data.SqlClient.xml
+C:\Users\joran\Documents\GitHub\groenteboer-2.0\ClassLibraryDb\bin\Debug\System.Drawing.Common.pdb
+C:\Users\joran\Documents\GitHub\groenteboer-2.0\ClassLibraryDb\bin\Debug\System.Drawing.Common.xml
+C:\Users\joran\Documents\GitHub\groenteboer-2.0\ClassLibraryDb\obj\Debug\ClassLibraryDb.csproj.AssemblyReference.cache
+C:\Users\joran\Documents\GitHub\groenteboer-2.0\ClassLibraryDb\obj\Debug\ClassLibraryDb.csproj.CoreCompileInputs.cache
+C:\Users\joran\Documents\GitHub\groenteboer-2.0\ClassLibraryDb\obj\Debug\ClassLib.ADBE1B49.Up2Date
+C:\Users\joran\Documents\GitHub\groenteboer-2.0\ClassLibraryDb\obj\Debug\ClassLibraryDb.dll
+C:\Users\joran\Documents\GitHub\groenteboer-2.0\ClassLibraryDb\obj\Debug\ClassLibraryDb.pdb
