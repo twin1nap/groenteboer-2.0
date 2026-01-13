@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "groenteboer app\\groenteboer app.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Product maneger tool\\Product manegement tool.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

@@ -33,61 +33,64 @@ namespace ClassLibraryDb
             using (MySqlConnection conn = new MySqlConnection(_connectionString)) // using = auto-dispose for what the garbage collector ignores
             {
                 //conn.Open();
-                try//extra voor als de database niet aan staat
+                //try//extra voor als de database niet aan staat
+                //{
+                //    //MessageBox.Show("Verbinding gemaakt!");
+                //}
+                //catch (MySqlException ex)
+                //{
+                //    Console.WriteLine("Fout bij verbinden met de database:\n" + ex.Message);
+                //    return null;
+                //}
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
                     conn.Open();
-                    Console.WriteLine("Verbinding gemaakt!");
-                    //MessageBox.Show("Verbinding gemaakt!");
-                }
-                catch (MySqlException ex)
-                {
-                    Console.WriteLine("Fout bij verbinden met de database:\n" + ex.Message);
-                    return null;
-                }
 
-                using (MySqlCommand cmd = new MySqlCommand(query, conn)) //andere manier van using nesten
-                using (MySqlDataReader reader = cmd.ExecuteReader())
-                {
-                    if (!reader.HasRows)
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
-                        Console.WriteLine("geen producten gevonden");
-                        //LblOutput.Text = "Null";
-                    }
-                    else
-                    {
-                        while (reader.Read())
+                        if (!reader.HasRows)
                         {
-                            Image image = null;
-                            if (!reader.IsDBNull(reader.GetOrdinal("product_image")))
+                            Console.WriteLine("geen producten gevonden");
+                            //LblOutput.Text = "Null";
+                        }
+                        else
+                        {
+                            while (reader.Read())
                             {
-                                byte[] imageBytes = (byte[])reader["product_image"];
-
-                                //MemoryStream ms = new MemoryStream(imageBytes);
-                                //Image = Image.FromStream(ms);
-
-                                using (MemoryStream ms = new MemoryStream(imageBytes))
+                                Image image = null;
+                                if (!reader.IsDBNull(reader.GetOrdinal("product_image")))
                                 {
-                                    using (var img = Image.FromStream(ms))
+                                    byte[] imageBytes = (byte[])reader["product_image"];
+
+                                    //MemoryStream ms = new MemoryStream(imageBytes);
+                                    //Image = Image.FromStream(ms);
+
+                                    using (MemoryStream ms = new MemoryStream(imageBytes))
                                     {
-                                        image = new Bitmap(img);
+                                        using (var img = Image.FromStream(ms))
+                                        {
+                                            image = new Bitmap(img);
+                                        }
                                     }
                                 }
+
+                                Product product = new Product()
+                                {
+                                    id = reader.GetInt32("id"),
+                                    ProductNaam = reader.GetString("productName"),
+                                    PriceType = reader.GetBoolean("priceType"),
+                                    ProductPrijs = reader.GetDecimal("price"),
+                                    ProductImage = image,
+                                    categoryId = reader.GetInt32("Category_id"),
+                                };
+                                products.Add(product);
+
                             }
-
-                            Product product = new Product()
-                            {
-                                id = reader.GetInt32("id"),
-                                ProductNaam = reader.GetString("productName"),
-                                PriceType = reader.GetBoolean("priceType"),
-                                ProductPrijs = reader.GetDecimal("price"),
-                                ProductImage = image,
-                                categoryId = reader.GetInt32("Category_id"),
-                            };
-                            products.Add(product);
-
                         }
                     }
                 }
+
             }
             return products;
         }
