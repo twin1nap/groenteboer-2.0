@@ -13,10 +13,12 @@ update product management tool to future standards
 upgrade naming
 
 planning:
-	ochtend 14-01-2026:	product management(currently called product manager) full crud.
+	ochtend 14-01-2026:	product management(currently called product manager) full crud & new standard.
 	middag 14-01-2026	groenteboer app transaction saved in database.
 				product management UI(categorized) en raports.
 	dag 19-01-2026		finish raports.
 				product managemet graph
+
+new standard done 12:32 14-01-2026, also added image update support
 				
 

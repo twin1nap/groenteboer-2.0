@@ -41,9 +41,10 @@
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
             this.panel1.Controls.Add(this.lblProductPrice);
             this.panel1.Controls.Add(this.LblProductName);
-            this.panel1.Location = new System.Drawing.Point(0, 185);
+            this.panel1.Location = new System.Drawing.Point(0, 231);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(252, 67);
+            this.panel1.Size = new System.Drawing.Size(284, 84);
             this.panel1.TabIndex = 2;
             // 
             // lblProductPrice
@@ -51,10 +52,10 @@
             this.lblProductPrice.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblProductPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProductPrice.Location = new System.Drawing.Point(0, 35);
-            this.lblProductPrice.MinimumSize = new System.Drawing.Size(200, 0);
+            this.lblProductPrice.Location = new System.Drawing.Point(0, 44);
+            this.lblProductPrice.MinimumSize = new System.Drawing.Size(225, 0);
             this.lblProductPrice.Name = "lblProductPrice";
-            this.lblProductPrice.Size = new System.Drawing.Size(252, 22);
+            this.lblProductPrice.Size = new System.Drawing.Size(284, 28);
             this.lblProductPrice.TabIndex = 1;
             this.lblProductPrice.Text = "prijs";
             this.lblProductPrice.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -65,9 +66,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LblProductName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblProductName.Location = new System.Drawing.Point(0, 0);
-            this.LblProductName.MinimumSize = new System.Drawing.Size(200, 0);
+            this.LblProductName.MinimumSize = new System.Drawing.Size(225, 0);
             this.LblProductName.Name = "LblProductName";
-            this.LblProductName.Size = new System.Drawing.Size(252, 22);
+            this.LblProductName.Size = new System.Drawing.Size(284, 28);
             this.LblProductName.TabIndex = 0;
             this.LblProductName.Text = "naam";
             this.LblProductName.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -75,23 +76,25 @@
             // PbProductPicture
             // 
             this.PbProductPicture.BackColor = System.Drawing.Color.White;
-            this.PbProductPicture.Location = new System.Drawing.Point(-2, -2);
+            this.PbProductPicture.Location = new System.Drawing.Point(-2, 3);
             this.PbProductPicture.Name = "PbProductPicture";
-            this.PbProductPicture.Size = new System.Drawing.Size(250, 184);
+            this.PbProductPicture.Size = new System.Drawing.Size(286, 225);
             this.PbProductPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PbProductPicture.TabIndex = 3;
+            this.PbProductPicture.TabIndex = 4;
             this.PbProductPicture.TabStop = false;
             // 
             // ProductPanel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Controls.Add(this.PbProductPicture);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ProductPanel";
-            this.Size = new System.Drawing.Size(250, 250);
+            this.Size = new System.Drawing.Size(281, 312);
+            this.Load += new System.EventHandler(this.ProductPanel_Load);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.PbProductPicture)).EndInit();
             this.ResumeLayout(false);

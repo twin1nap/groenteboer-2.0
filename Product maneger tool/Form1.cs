@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ClassLibraryDb;
+using ClassLibraryDb.models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,12 +10,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 namespace Product_maneger_tool
 {
     public partial class ProductManeger : Form
     {
+        string connectionstring = "server=localhost;database=groenteboer; user=root; password=";
         public ProductManeger()
         {
             InitializeComponent();
@@ -21,82 +23,35 @@ namespace Product_maneger_tool
 
         private void ProductManeger_Load(object sender, EventArgs e)
         {
-            DataRequest("Select * FROM producten");
+            //DataRequest("Select * FROM producten");
+            LoadData();
+
         }
-        private void DataRequest(string query)
+        private void LoadData()
         {
+            List<Product> products = new List<Product>();
+            data db = new data(connectionstring);
+
+            products = db.GetAllProducts();
+
             FlpProducts.Controls.Clear();
-            string connectionstring = "server=localhost;database=groenteboer; user=root; password=";
 
-            using (MySqlConnection conn = new MySqlConnection(connectionstring)) // using = auto-dispose for what the garbage collector ignores
+            foreach (Product product in products)
             {
-                //conn.Open();
-                try//extra voor als de database niet aan staat
+                ProductPanel productPanel = new ProductPanel
                 {
-                    conn.Open();
-                    Console.WriteLine("Verbinding gemaakt!");
-                    //MessageBox.Show("Verbinding gemaakt!");
-                }
-                catch (MySqlException ex)
-                {
-                    MessageBox.Show("Fout bij verbinden met de database:\n" + ex.Message);
-                    return;
-                }
+                    productdata = product
+                };
+                productPanel.Click += button_Product_Click;
 
-                using (MySqlCommand cmd = new MySqlCommand(query, conn)) //andere manier van using nesten
-                using (MySqlDataReader reader = cmd.ExecuteReader())
-                {
-                    if (!reader.HasRows)
-                    {
-                        MessageBox.Show("geen producten gevonden");
-                        //LblOutput.Text = "Null";
-                    }
-                    else
-                    {
-
-                        while (reader.Read())
-                        {
-
-                            Image image = null;
-
-
-                            if (!reader.IsDBNull(reader.GetOrdinal("product_image")))
-                            {
-                                byte[] imageBytes = (byte[])reader["product_image"];
-
-                                //MemoryStream ms = new MemoryStream(imageBytes);
-                                //Image = Image.FromStream(ms);
-
-                                using (MemoryStream ms = new MemoryStream(imageBytes))
-                                {
-                                    using (var img = Image.FromStream(ms))
-                                    {
-                                        image = new Bitmap(img);
-                                    }
-                                }
-                            }
-
-
-                            ProductPanel ProductPanel = new ProductPanel
-                            {
-                                Product_Id = reader.GetInt32("id"),
-                                ProductNaam = reader.GetString("productName"),
-                                ProductPrijs = reader.GetDecimal("price"),
-                                ProductImage = image,
-                                Product_categorie = reader.GetInt16("Category_id")
-                            };
-                            ProductPanel.Click += button_Product_Click;
-
-                            FlpProducts.Controls.Add(ProductPanel);
-                        }
-                    }
-                }
+                FlpProducts.Controls.Add(productPanel);
             }
+
             Button BtnNew = new Button();
             BtnNew.Text = "+";
             BtnNew.Font = new Font(BtnNew.Font.FontFamily, 16); // 16 is the new font size
             BtnNew.AutoSize = false;
-            BtnNew.Size = new System.Drawing.Size(200, 200);
+            BtnNew.Size = new Size(200, 200);
             BtnNew.Click += BtnNew_Click;
             FlpProducts.Controls.Add(BtnNew);
 
@@ -108,15 +63,17 @@ namespace Product_maneger_tool
             //MessageBox.Show(product.Product_Id.ToString());
             ProductEditor productEditor = new ProductEditor
             {
-                ProductNaam = product.ProductNaam,
-                ProductPrijs = product.ProductPrijs,
-                ProductImage = product.ProductImage,
-                Product_Id = product.Product_Id
+                //ProductNaam = product.productdata.ProductNaam,
+                //ProductPrijs = product.productdata.ProductPrijs,
+                //ProductImage = product.productdata.ProductImage,
+                //Product_Id = product.productdata.id
+                productdata = product.productdata
             };
 
             if (productEditor.ShowDialog() == DialogResult.OK)
             {
-                DataRequest("Select * FROM producten");
+                //DataRequest("Select * FROM producten");
+                LoadData();
             }
         }
         private void BtnNew_Click(object sender, EventArgs e)

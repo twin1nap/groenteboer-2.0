@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ClassLibraryDb.models;
+using Google.Protobuf.WellKnownTypes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,51 +15,76 @@ namespace Product_maneger_tool
 {
     public partial class ProductPanel : UserControl
     {
-        public int Product_Id {  get; set; }
-        public string ProductNaam
-        {
-            get { return LblProductName.Text; }
-            set { LblProductName.Text = value; }
-        }
-        public decimal ProductPrijs
-        {
-            get { return decimal.Parse(lblProductPrice.Text.Replace("€", "").Trim()); }
-            set { lblProductPrice.Text = $"{value:c2}"; }
-        }
-        public Image ProductImage
-        {
-            get { return PbProductPicture.Image; }
-            set { PbProductPicture.Image = value; }
-        }
-        private int _categorie;
-        public int Product_categorie
-        {
-            get { return _categorie; }
-            set
-            {
-                _categorie = value;
-                if (value == 1)
-                {
-                    panel1.BackColor = Color.Lime;
-                }
-                else if (value == 2)
-                {
-                    panel1.BackColor = Color.Tomato;
-                }
-                else if (value == 3)
-                {
-                    panel1.BackColor = Color.LightPink;
-                }
-                else
-                {
-                    panel1.BackColor = SystemColors.ControlDark;
-                }
-            }
-        }
+        public Product productdata {  get; set; }
+        //public string ProductNaam
+        //{
+        //    get { return LblProductName.Text; }
+        //    set { LblProductName.Text = value; }
+        //}
+        //public bool PriceType
+        //{
+        //    get; set;
+        //}
+        //public decimal ProductPrijs
+        //{
+        //    get 
+        //    {
+        //        int index = lblProductPrice.Text.Replace("€", "").IndexOf("per");
+
+        //        return decimal.Parse(lblProductPrice.Text.Replace("€", "").Substring(0, index).Trim()); 
+        //    }
+        //    set 
+        //    { 
+        //        Console.WriteLine(PriceType.ToString());
+        //        if (PriceType)
+        //        {
+        //            lblProductPrice.Text = $"{value:c2} per kilo"; 
+        //        }
+        //        else
+        //        {
+        //            lblProductPrice.Text = $"{value:c2} per stuk";
+        //        }
+        //    }
+        //}
+        //public Image ProductImage
+        //{
+        //    set { PbProductPicture.Image = value; }
+        //}
         public ProductPanel()
         {
             InitializeComponent();
             EnableClickPassthrough(this);
+        }
+        private void ProductPanel_Load(object sender, EventArgs e)
+        {
+            LblProductName.Text = productdata.ProductNaam;
+            if (productdata.PriceType)
+            {
+                lblProductPrice.Text = $"{productdata.ProductPrijs:c2} per kilo";
+            }
+            else
+            {
+                lblProductPrice.Text = $"{productdata.ProductPrijs:c2} per stuk";
+            }
+            PbProductPicture.Image = productdata.ProductImage;
+
+            if (productdata.categoryId == 1)
+            {
+                panel1.BackColor = Color.Lime;
+            }
+            else if (productdata.categoryId == 2)
+            {
+                panel1.BackColor = Color.Tomato;
+            }
+            else if (productdata.categoryId == 3)
+            {
+                panel1.BackColor = Color.LightPink;
+            }
+            else
+            {
+                panel1.BackColor = SystemColors.ControlDark;
+            }
+
         }
 
         private void EnableClickPassthrough(Control parent)
@@ -71,5 +98,6 @@ namespace Product_maneger_tool
                 }
             }
         }
+
     }
 }

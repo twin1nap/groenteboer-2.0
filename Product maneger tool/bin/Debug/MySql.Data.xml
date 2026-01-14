@@ -4776,22 +4776,12 @@
             SSL options for connection.
             </summary>
         </member>
-        <member name="F:MySql.Data.MySqlClient.MySqlSslMode.None">
-            <summary>
-            Do not use SSL.
-            </summary>
-        </member>
         <member name="F:MySql.Data.MySqlClient.MySqlSslMode.Disabled">
             <summary>
             Do not use SSL.
             </summary>
         </member>
         <member name="F:MySql.Data.MySqlClient.MySqlSslMode.Preferred">
-            <summary>
-            Use SSL, if server supports it. This option is only available for the classic protocol.
-            </summary>
-        </member>
-        <member name="F:MySql.Data.MySqlClient.MySqlSslMode.Prefered">
             <summary>
             Use SSL, if server supports it. This option is only available for the classic protocol.
             </summary>
@@ -13049,16 +13039,6 @@
             Buffer used to store the data received from the server.
             </summary>
         </member>
-        <member name="F:MySqlX.Communication.XCompressionController._deflateCompressStream">
-            <summary>
-            Deflate stream used for compressing data.
-            </summary>
-        </member>
-        <member name="F:MySqlX.Communication.XCompressionController._deflateDecompressStream">
-            <summary>
-            Deflate stream used for decompressing data.
-            </summary>
-        </member>
         <member name="F:MySqlX.Communication.XCompressionController._initializeForCompression">
             <summary>
             Flag indicating if the initialization is for compression or decompression.
@@ -13138,14 +13118,6 @@
         <member name="M:MySqlX.Communication.XCompressionController.Decompress(System.Byte[],System.Int32)">
             <summary>
             General method used to decompress data using the compression algorithm defined in the constructor.
-            </summary>
-            <param name="input">The data to decompress.</param>
-            <param name="length">The expected length of the decompressed data.</param>
-            <returns>A decompressed byte array.</returns>
-        </member>
-        <member name="M:MySqlX.Communication.XCompressionController.DecompressUsingDeflateStream(System.Byte[],System.Int32)">
-            <summary>
-            Decompresses data using the deflate_stream compression algorithm.
             </summary>
             <param name="input">The data to decompress.</param>
             <param name="length">The expected length of the decompressed data.</param>

@@ -94,6 +94,50 @@ namespace ClassLibraryDb
             }
             return products;
         }
-    }
 
+        public void UpdateProduct(Product productdata)
+        {
+
+            using (MySqlConnection conn = new MySqlConnection(_connectionString))
+            {
+                string query = @"
+                UPDATE
+                    `producten`
+                SET
+                    `productName` = @naam,
+                    `price` = @price,
+                    `product_image` = @img,
+                    `priceType` = @priceType,
+                    `Category_id` = @category
+                WHERE
+                    `id` = @id";
+                conn.Open();
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    Image img = productdata.ProductImage;
+                    byte[] imageBytes;
+
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        img.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                        imageBytes = ms.ToArray();
+                    }
+
+                    cmd.Parameters.Add(new MySqlParameter("@id", MySqlDbType.Int32) { Value = productdata.id });
+                    cmd.Parameters.Add(new MySqlParameter("@naam", MySqlDbType.VarChar) { Value = productdata.ProductNaam });
+                    cmd.Parameters.Add(new MySqlParameter("@price", MySqlDbType.Decimal) { Value = productdata.ProductPrijs });
+                    cmd.Parameters.Add(new MySqlParameter("@priceType", MySqlDbType.Int16) { Value = productdata.id });
+                    cmd.Parameters.Add(new MySqlParameter("@img", MySqlDbType.Blob) { Value = imageBytes });
+                    cmd.Parameters.Add(new MySqlParameter("@category", MySqlDbType.Int32) { Value = productdata.categoryId });
+
+                    foreach (MySqlParameter p in cmd.Parameters)
+                        Console.WriteLine($"{p.ParameterName} = {p.Value}");
+
+                    int affectedRows = cmd.ExecuteNonQuery();
+                    Console.WriteLine($"{affectedRows} rij(en) geüpdatet.");
+                }
+            }
+        }
+
+    }
 }
