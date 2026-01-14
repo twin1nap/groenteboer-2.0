@@ -126,7 +126,7 @@ namespace ClassLibraryDb
                     cmd.Parameters.Add(new MySqlParameter("@id", MySqlDbType.Int32) { Value = productdata.id });
                     cmd.Parameters.Add(new MySqlParameter("@naam", MySqlDbType.VarChar) { Value = productdata.ProductNaam });
                     cmd.Parameters.Add(new MySqlParameter("@price", MySqlDbType.Decimal) { Value = productdata.ProductPrijs });
-                    cmd.Parameters.Add(new MySqlParameter("@priceType", MySqlDbType.Int16) { Value = productdata.id });
+                    cmd.Parameters.Add(new MySqlParameter("@priceType", MySqlDbType.Int16) { Value = productdata.PriceType });
                     cmd.Parameters.Add(new MySqlParameter("@img", MySqlDbType.Blob) { Value = imageBytes });
                     cmd.Parameters.Add(new MySqlParameter("@category", MySqlDbType.Int32) { Value = productdata.categoryId });
 
@@ -139,5 +139,91 @@ namespace ClassLibraryDb
             }
         }
 
+        public List<category> GetAllCategories()
+        {
+            List<category> categories = new List<category>();
+            string query = "Select id, name FROM categories";
+            using (MySqlConnection conn = new MySqlConnection(_connectionString)) // using = auto-dispose for what the garbage collector ignores
+            {
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    conn.Open();
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (!reader.HasRows)
+                        {
+                            Console.WriteLine("geen categorien gevonden");
+                            //LblOutput.Text = "Null";
+                        }
+                        else
+                        {
+                            while (reader.Read())
+                            {
+
+                                category category = new category()
+                                {
+                                    Id = reader.GetInt32("id"),
+                                    Name = reader.GetString("name"),
+                                };
+                                categories.Add(category);
+
+                            }
+                        }
+                    }
+                }
+
+            }
+            return categories;
+        }
+
+        public void AddProduct(Product productdata)
+        {
+
+            using (MySqlConnection conn = new MySqlConnection(_connectionString))
+            {
+                string query = @"
+                INSERT INTO `producten`(
+                    -- `id`,
+                    `productName`,
+                    `price`,
+                    `product_image`,
+                    `priceType`,
+                    `Category_id`
+                )
+                VALUES(
+                    @naam,
+                    @price,
+                    @img,
+                    @priceType,
+                    @category
+                )";
+                conn.Open();
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    //img logic
+                    Image img = productdata.ProductImage;
+                    byte[] imageBytes;
+
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        img.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                        imageBytes = ms.ToArray();
+                    }
+
+                    cmd.Parameters.Add(new MySqlParameter("@naam", MySqlDbType.VarChar) { Value = productdata.ProductNaam });
+                    cmd.Parameters.Add(new MySqlParameter("@price", MySqlDbType.Decimal) { Value = productdata.ProductPrijs });
+                    cmd.Parameters.Add(new MySqlParameter("@priceType", MySqlDbType.Int16) { Value = productdata.PriceType });
+                    cmd.Parameters.Add(new MySqlParameter("@img", MySqlDbType.Blob) { Value = imageBytes });
+                    cmd.Parameters.Add(new MySqlParameter("@category", MySqlDbType.Int32) { Value = productdata.categoryId });
+
+                    foreach (MySqlParameter p in cmd.Parameters)
+                        Console.WriteLine($"{p.ParameterName} = {p.Value}");
+
+                    int affectedRows = cmd.ExecuteNonQuery();
+                    Console.WriteLine($"{affectedRows} rij(en) geüpdatet.");
+                }
+            }
+        }
     }
 }

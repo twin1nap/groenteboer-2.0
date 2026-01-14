@@ -38,6 +38,8 @@
             this.BtnCancle = new System.Windows.Forms.Button();
             this.BtnSave = new System.Windows.Forms.Button();
             this.openFileDialogimg = new System.Windows.Forms.OpenFileDialog();
+            this.label4 = new System.Windows.Forms.Label();
+            this.comboBoxCategories = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.PbProductPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumID)).BeginInit();
@@ -93,9 +95,11 @@
             // 
             // NumID
             // 
+            this.NumID.Enabled = false;
             this.NumID.Location = new System.Drawing.Point(126, 435);
             this.NumID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.NumID.Name = "NumID";
+            this.NumID.ReadOnly = true;
             this.NumID.Size = new System.Drawing.Size(187, 26);
             this.NumID.TabIndex = 5;
             // 
@@ -110,8 +114,9 @@
             // 
             // BtnCancle
             // 
+            this.BtnCancle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BtnCancle.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnCancle.Location = new System.Drawing.Point(14, 491);
+            this.BtnCancle.Location = new System.Drawing.Point(14, 525);
             this.BtnCancle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnCancle.Name = "BtnCancle";
             this.BtnCancle.Size = new System.Drawing.Size(84, 29);
@@ -121,7 +126,8 @@
             // 
             // BtnSave
             // 
-            this.BtnSave.Location = new System.Drawing.Point(227, 491);
+            this.BtnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnSave.Location = new System.Drawing.Point(210, 525);
             this.BtnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnSave.Name = "BtnSave";
             this.BtnSave.Size = new System.Drawing.Size(84, 29);
@@ -135,11 +141,31 @@
             this.openFileDialogimg.FileName = "Select an image";
             this.openFileDialogimg.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(16, 471);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(79, 20);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "categorie:";
+            // 
+            // comboBoxCategories
+            // 
+            this.comboBoxCategories.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxCategories.FormattingEnabled = true;
+            this.comboBoxCategories.Location = new System.Drawing.Point(126, 471);
+            this.comboBoxCategories.Name = "comboBoxCategories";
+            this.comboBoxCategories.Size = new System.Drawing.Size(191, 28);
+            this.comboBoxCategories.TabIndex = 10;
+            // 
             // ProductEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(322, 529);
+            this.ClientSize = new System.Drawing.Size(322, 576);
+            this.Controls.Add(this.comboBoxCategories);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.BtnSave);
             this.Controls.Add(this.BtnCancle);
             this.Controls.Add(this.label3);
@@ -175,5 +201,7 @@
         private System.Windows.Forms.Button BtnCancle;
         private System.Windows.Forms.Button BtnSave;
         private System.Windows.Forms.OpenFileDialog openFileDialogimg;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox comboBoxCategories;
     }
 }

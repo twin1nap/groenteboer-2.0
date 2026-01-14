@@ -15,7 +15,7 @@ namespace Product_maneger_tool
 {
     public partial class ProductManeger : Form
     {
-        string connectionstring = "server=localhost;database=groenteboer; user=root; password=";
+        string connectionstring = "server=localhost;database=groenteboer2; user=root; password=";
         public ProductManeger()
         {
             InitializeComponent();
@@ -78,7 +78,13 @@ namespace Product_maneger_tool
         }
         private void BtnNew_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("producten kunnen nog niet toegevoegd worden", "add product | info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //MessageBox.Show("producten kunnen nog niet toegevoegd worden", "add product | info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ProductEditor productEditor = new ProductEditor();
+            if (productEditor.ShowDialog() == DialogResult.OK)
+            {
+                //DataRequest("Select * FROM producten");
+                LoadData();
+            }
         }
     }
 }

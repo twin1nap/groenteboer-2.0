@@ -20,7 +20,7 @@ namespace groenteboer_app
 {
     public partial class FormGroenteboer : Form
     {
-        private string connectionstring = "server=localhost;database=groenteboer; user=root; password=";
+        private string connectionstring = "server=localhost;database=groenteboer2; user=root; password=";
         private decimal _total;
 
         decimal total

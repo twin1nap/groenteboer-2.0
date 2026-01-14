@@ -9,16 +9,16 @@ folder models for classes, class data for sql code.
 Original project had older mysql dll, because it gets compiled after the classlibrary(with the same dll but newer) it replaces the old file, which then overwrites the dll of the newer version causing an error, remove the dll because its not needed anymore.
 
 todo:
-update product management tool to future standards
-upgrade naming
+
 
 planning:
-	ochtend 14-01-2026:	product management(currently called product manager) full crud & new standard.
-	middag 14-01-2026	groenteboer app transaction saved in database.
+	dag 14-01-2026:	product management(currently called product manager) full crud & new standard.
+	dag 15-01-2026	groenteboer app transaction saved in database.
 				product management UI(categorized) en raports.
 	dag 19-01-2026		finish raports.
 				product managemet graph
 
 new standard done 12:32 14-01-2026, also added image update support
-				
+catagory edit done 16:00 14-01-2026
+add done 16:20 14-01-2026
 

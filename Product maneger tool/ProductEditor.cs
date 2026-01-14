@@ -18,7 +18,7 @@ namespace Product_maneger_tool
 {
     public partial class ProductEditor : Form
     {
-        private string connectionstring = "server=localhost;database=groenteboer; user=root; password=";
+        private string connectionstring = "server=localhost;database=groenteboer2; user=root; password=";
         public Product productdata { get; set; }
         //public int Product_Id
         //{
@@ -46,10 +46,28 @@ namespace Product_maneger_tool
         }
         private void ProductEditor_Load(object sender, EventArgs e)
         {
-            NumID.Value = productdata.id;
-            TbName.Text = productdata.ProductNaam;
-            NumPrice.Value = productdata.ProductPrijs;
-            PbProductPicture.Image = productdata.ProductImage;
+            //make category selection
+            data db = new data(connectionstring);
+            comboBoxCategories.DataSource = db.GetAllCategories();
+            comboBoxCategories.DisplayMember = "Name"; // what user sees
+            comboBoxCategories.ValueMember = "Id";     // hidden DB value
+
+            //for add:
+            if (productdata == null)
+            {
+                BtnSave.Text = "add";
+                comboBoxCategories.SelectedValue = 4;
+            }
+            else // if update
+            {
+                NumID.Value = productdata.id;
+                TbName.Text = productdata.ProductNaam;
+                NumPrice.Value = productdata.ProductPrijs;
+                PbProductPicture.Image = productdata.ProductImage;
+
+                comboBoxCategories.SelectedValue = productdata.categoryId;
+            }
+
         }
 
         private void PbProductPicture_Click(object sender, EventArgs e)
@@ -65,18 +83,41 @@ namespace Product_maneger_tool
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            //NumID.Value = productdata.id;
-            productdata.id = int.Parse(NumID.Value.ToString());
-            //TbName.Text = productdata.ProductNaam;
-            productdata.ProductNaam = TbName.Text;
-            //NumPrice.Value = productdata.ProductPrijs;
-            productdata.ProductPrijs = NumPrice.Value;
-            //PbProductPicture.Image = productdata.ProductImage;
-            productdata.ProductImage = PbProductPicture.Image;
-            //Button button = sender as Button;
             data db = new data(connectionstring);
 
-            db.UpdateProduct(productdata);
+            if (productdata != null)
+            {
+                //NumID.Value = productdata.id;
+                productdata.id = int.Parse(NumID.Value.ToString());
+                productdata.ProductNaam = TbName.Text;
+                //NumPrice.Value = productdata.ProductPrijs;
+                productdata.ProductPrijs = NumPrice.Value;
+                //PbProductPicture.Image = productdata.ProductImage;
+                productdata.ProductImage = PbProductPicture.Image;
+                //Button button = sender as Button;
+                //comboBoxCategories.SelectedValue = productdata.categoryId;
+                productdata.categoryId = (int)comboBoxCategories.SelectedValue;
+                
+                db.UpdateProduct(productdata);
+            }
+            else
+            {
+                productdata = new Product
+                {
+                    ProductNaam = TbName.Text,
+                    //NumPrice.Value = productdata.ProductPrijs;
+                    ProductPrijs = NumPrice.Value,
+                    //PbProductPicture.Image = productdata.ProductImage;
+                    ProductImage = PbProductPicture.Image,
+                    //Button button = sender as Button;
+                    //comboBoxCategories.SelectedValue = productdata.categoryId;
+                    categoryId = (int)comboBoxCategories.SelectedValue
+
+                };
+                db.AddProduct(productdata);
+            }
+            //TbName.Text = productdata.ProductNaam;
+
 
             this.DialogResult = DialogResult.OK;
         }
