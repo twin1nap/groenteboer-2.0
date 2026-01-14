@@ -9,7 +9,8 @@ folder models for classes, class data for sql code.
 Original project had older mysql dll, because it gets compiled after the classlibrary(with the same dll but newer) it replaces the old file, which then overwrites the dll of the newer version causing an error, remove the dll because its not needed anymore.
 
 todo:
-
+deleted or active button(changes what on means), should i add an archive filter(only non active products), make function for al products and only active ones.
+categories adaptive in store?.
 
 planning:
 	dag 14-01-2026:	product management(currently called product manager) full crud & new standard.
