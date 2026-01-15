@@ -132,8 +132,8 @@ namespace ClassLibraryDb
                     cmd.Parameters.Add(new MySqlParameter("@category", MySqlDbType.Int32) { Value = productdata.categoryId });
                     cmd.Parameters.Add(new MySqlParameter("@active", MySqlDbType.Int16) { Value = productdata.active });
 
-                    foreach (MySqlParameter p in cmd.Parameters)
-                        Console.WriteLine($"{p.ParameterName} = {p.Value}");
+                    //foreach (MySqlParameter p in cmd.Parameters)
+                    //    Console.WriteLine($"{p.ParameterName} = {p.Value}");
 
                     int affectedRows = cmd.ExecuteNonQuery();
                     Console.WriteLine($"{affectedRows} rij(en) geüpdatet.");
@@ -325,5 +325,87 @@ namespace ClassLibraryDb
             }
             return priceTypes;
         }
+
+        public void AddReceipt(Dictionary<Product, decimal> receipt)
+        {
+
+            using (MySqlConnection conn = new MySqlConnection(_connectionString))
+            {
+                //make receipt
+                string queryReceipt = @"
+                INSERT INTO receipt_metadata(TIMESTAMP)
+                VALUES(CURRENT_TIMESTAMP());
+
+                -- get the id of inserted receipt
+                SELECT
+                    LAST_INSERT_ID()
+";
+                conn.Open();
+                int receiptId;
+                using (MySqlCommand cmd = new MySqlCommand(queryReceipt, conn))
+                {
+                    receiptId = Convert.ToInt32(cmd.ExecuteScalar());
+                }
+
+
+                // add products
+
+                foreach (KeyValuePair<Product, decimal> product in receipt)
+                {
+                    string queryproducts = @"
+                    INSERT INTO receipt_products(
+                        receipt_ID,
+                        product_ID,
+                        amount,
+                        price_at_sale,
+                        pricetype_at_sale
+                    )
+                    VALUES(
+                        @receiptId,
+                        @productId,
+                        @amount,
+                        @price,
+                        @priceType
+                    )
+";
+                    using (MySqlCommand cmd = new MySqlCommand(queryproducts, conn))
+                    {
+
+                        cmd.Parameters.Add(new MySqlParameter("@receiptId", MySqlDbType.Int32) { Value = receiptId });
+                        cmd.Parameters.Add(new MySqlParameter("@productId", MySqlDbType.Int32) { Value = product.Key.id });
+                        cmd.Parameters.Add(new MySqlParameter("@amount", MySqlDbType.Decimal) { Value = product.Value });
+                        cmd.Parameters.Add(new MySqlParameter("@price", MySqlDbType.Decimal) { Value = product.Key.ProductPrijs });
+                        cmd.Parameters.Add(new MySqlParameter("@priceType", MySqlDbType.Int16) { Value = product.Key.PriceType });
+
+                        foreach (MySqlParameter p in cmd.Parameters)
+                            Console.WriteLine($"{p.ParameterName} = {p.Value}");
+
+                        int affectedRows = cmd.ExecuteNonQuery();
+                        Console.WriteLine($"{affectedRows} rij(en) geüpdatet.");
+                    }
+                }
+            }
+        }
     }
 }
+
+// QUERY RECEIPT:
+
+//--Get all products for a specific receipt, with total price and price type text
+//SELECT 
+//    rp.receipt_ID,                             -- The receipt ID
+//    p.productName AS Product,                  -- Product name instead of product ID
+//    rp.amount,                                 -- Quantity purchased
+//    rp.price_at_sale AS PricePerUnit,          -- Price at the time of sale
+//    pt.type AS PriceType,                  -- Price type text (from price_type table)
+//    (rp.price_at_sale * rp.amount) AS LineTotal -- Total price for this line item
+//FROM 
+//    receipt_products rp
+//    LEFT JOIN producten p ON rp.product_ID = p.id        -- Join to get product info
+//    LEFT JOIN pricetype pt ON rp.pricetype_at_sale = pt.ID  -- Join to get price type text
+//WHERE 
+//    rp.receipt_ID = 1; --Filter by the specific receipt
+
+//SELECT SUM(rp2.price_at_sale * rp2.amount) AS TotalPrice
+//     FROM receipt_products rp2 
+//     WHERE rp2.receipt_ID = 1 

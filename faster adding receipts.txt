@@ -1,0 +1,27 @@
+INSERT INTO receipt_products (receipt_ID, product_ID, amount, price_at_sale, pricetype_at_sale)
+VALUES 
+(1, 36, 1.25, 2.5, 1),
+(1, 12, 0.5, 5.0, 2),
+(1, 20, 2, 3.0, 1);
+
+
+using (var tran = conn.BeginTransaction())
+{
+    using (var cmd = new MySqlCommand("", conn, tran))
+    {
+        for (int i = 0; i < products.Count; i++)
+        {
+            cmd.CommandText += $"INSERT INTO receipt_products (receipt_ID, product_ID, amount, price_at_sale, pricetype_at_sale) " +
+                               $"VALUES (@receiptId{i}, @productId{i}, @amount{i}, @price{i}, @priceType{i});";
+
+            cmd.Parameters.AddWithValue($"@receiptId{i}", receiptId);
+            cmd.Parameters.AddWithValue($"@productId{i}", products[i].Id);
+            cmd.Parameters.AddWithValue($"@amount{i}", products[i].Amount);
+            cmd.Parameters.AddWithValue($"@price{i}", products[i].Price);
+            cmd.Parameters.AddWithValue($"@priceType{i}", products[i].PriceType);
+        }
+
+        cmd.ExecuteNonQuery(); // single batch execution
+    }
+    tran.Commit();
+}

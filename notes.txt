@@ -11,8 +11,17 @@ Original project had older mysql dll, because it gets compiled after the classli
 todo:
  should i add an archive filter(only non active products)
 categories adaptive in store?(tab pages generated.)
-updtabale price type.
 unactive products visably unactive before editing them.
+error exeption to add an error when not filled in some info.
+upgrade receipt:
+	'''
+	When a receipt is created, the receipt ID is returned. This ID can later be used to retrieve all receipt data via a join query and print the receipt on a physical printer. The receipt ID also functions as the barcode reference, allowing the entire receipt to be reconstructed from the database.
+
+	Because no barcode scanner is available, a manual input field is used instead. The system distinguishes between product IDs and receipt IDs based on the first digit: IDs starting with 0 are treated as product IDs, while IDs starting with 1 are treated as receipt IDs. All IDs have a fixed length, with leading 	zeros added during generation.
+
+	Using a receipt ID, an existing receipt can be loaded, its products can be reviewed, modified, or removed, and the updated receipt can then be saved back to the database.
+	'''
+comment all old code
 
 planning:
 	dag 14-01-2026:	product management(currently called product manager) full crud & new standard.
@@ -24,5 +33,6 @@ planning:
 new standard - done 12:32 14-01-2026, also added image update support
 catagory edit - done 16:00 14-01-2026
 add done - 16:20 14-01-2026
-added soft delete as checkbox for active products - 9:45 1501-2026
+added soft delete as checkbox for active products - 9:45 15-1-2026
 full crud done - 10:38 15-01-2026
+receipt save done 16:25 12-01-2026

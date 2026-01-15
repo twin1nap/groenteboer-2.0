@@ -133,6 +133,15 @@ namespace groenteboer_app
 
         private void BtnPay_Click(object sender, EventArgs e)
         {
+            data db = new data(connectionstring);
+            Dictionary<Product, decimal> receipt = new Dictionary<Product, decimal>();
+            foreach (KeyValuePair<ProductPanel, decimal> item in BonData)
+            {
+                Product data = item.Key.productdata;
+                receipt[data] = item.Value;
+            }
+            db.AddReceipt(receipt);
+            //clear data
             MessageBox.Show($"betaalt: {total:C2}", "betaalt", MessageBoxButtons.OK);
             ListBoxBon.Items.Clear();
             BtnPay.Enabled = false;
