@@ -64,7 +64,7 @@ namespace groenteboer_app
             List<Product> products = new List<Product>();
             data db = new data(connectionstring);
 
-            products = db.GetAllProducts();
+            products = db.GetAllActiveProducts();
             foreach (Product product in products)
             {
                 ProductPanel productPanel = new ProductPanel
@@ -104,7 +104,7 @@ namespace groenteboer_app
             //ListBoxBon.Items.Add($"{product.ProductNaam} | {product.ProductPrijs:C2}");
             //total += product.ProductPrijs;
             decimal amount;
-            if (product.productdata.PriceType)
+            if (product.productdata.PriceType == 2)
             {
                 Numpad numpad = new Numpad();
                 if (numpad.ShowDialog() == DialogResult.OK)
@@ -151,7 +151,7 @@ namespace groenteboer_app
             {
                 ProductPanel key = item.Key;
                 decimal amount = item.Value;
-                if (key.productdata.PriceType)
+                if (key.productdata.PriceType == 2)
                 {
                     ListBoxBon.Items.Add($"{amount} kilo \t {key.productdata.ProductNaam}({key.productdata.ProductPrijs:C2} per kilo) | {(key.productdata.ProductPrijs * amount):C2} ");
                 }

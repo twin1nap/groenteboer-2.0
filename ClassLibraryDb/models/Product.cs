@@ -11,9 +11,10 @@ namespace ClassLibraryDb.models
     {
         public int id { get ; set; }
         public string ProductNaam { get; set; }
-        public bool PriceType { get; set; }
+        public int PriceType { get; set; }
         public decimal ProductPrijs { get; set; }
         public Image ProductImage { get; set; }
         public int categoryId { get; set; }
+        public bool active { get; set; }
     }
 }

@@ -57,7 +57,7 @@ namespace groenteboer_app
         private void ProductPanel_Load(object sender, EventArgs e)
         {
             LblProductName.Text = productdata.ProductNaam;
-            if (productdata.PriceType)
+            if (productdata.PriceType == 2)
             {
                 lblProductPrice.Text = $"{productdata.ProductPrijs:c2} per kilo";
             }

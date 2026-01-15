@@ -52,11 +52,16 @@ namespace Product_maneger_tool
             comboBoxCategories.DisplayMember = "Name"; // what user sees
             comboBoxCategories.ValueMember = "Id";     // hidden DB value
 
+            //make price type selection
+            comboBoxPriceType.DataSource = db.GetAllPriceTypes();
+            comboBoxPriceType.DisplayMember = "Name"; // what user sees
+            comboBoxPriceType.ValueMember = "Id";     // hidden DB value
             //for add:
             if (productdata == null)
             {
                 BtnSave.Text = "add";
                 comboBoxCategories.SelectedValue = 4;
+                checkBoxActive.Checked = true;
             }
             else // if update
             {
@@ -66,6 +71,8 @@ namespace Product_maneger_tool
                 PbProductPicture.Image = productdata.ProductImage;
 
                 comboBoxCategories.SelectedValue = productdata.categoryId;
+                checkBoxActive.Checked = productdata.active;
+                comboBoxPriceType.SelectedValue = productdata.PriceType;
             }
 
         }
@@ -85,7 +92,7 @@ namespace Product_maneger_tool
         {
             data db = new data(connectionstring);
 
-            if (productdata != null)
+            if (productdata != null) //update
             {
                 //NumID.Value = productdata.id;
                 productdata.id = int.Parse(NumID.Value.ToString());
@@ -97,10 +104,15 @@ namespace Product_maneger_tool
                 //Button button = sender as Button;
                 //comboBoxCategories.SelectedValue = productdata.categoryId;
                 productdata.categoryId = (int)comboBoxCategories.SelectedValue;
-                
+
+                //checkBoxActive.Checked = productdata.active;
+                productdata.active = checkBoxActive.Checked;
+
+                productdata.PriceType = (int)comboBoxPriceType.SelectedValue;
+
                 db.UpdateProduct(productdata);
             }
-            else
+            else // add
             {
                 productdata = new Product
                 {
@@ -111,7 +123,9 @@ namespace Product_maneger_tool
                     ProductImage = PbProductPicture.Image,
                     //Button button = sender as Button;
                     //comboBoxCategories.SelectedValue = productdata.categoryId;
-                    categoryId = (int)comboBoxCategories.SelectedValue
+                    categoryId = (int)comboBoxCategories.SelectedValue,
+
+                    PriceType = (int)comboBoxPriceType.SelectedValue
 
                 };
                 db.AddProduct(productdata);

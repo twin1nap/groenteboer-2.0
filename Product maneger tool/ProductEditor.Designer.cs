@@ -40,6 +40,9 @@
             this.openFileDialogimg = new System.Windows.Forms.OpenFileDialog();
             this.label4 = new System.Windows.Forms.Label();
             this.comboBoxCategories = new System.Windows.Forms.ComboBox();
+            this.checkBoxActive = new System.Windows.Forms.CheckBox();
+            this.comboBoxPriceType = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.PbProductPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NumID)).BeginInit();
@@ -47,20 +50,18 @@
             // 
             // TbName
             // 
-            this.TbName.Location = new System.Drawing.Point(126, 364);
-            this.TbName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.TbName.Location = new System.Drawing.Point(112, 291);
             this.TbName.Name = "TbName";
-            this.TbName.Size = new System.Drawing.Size(186, 26);
+            this.TbName.Size = new System.Drawing.Size(166, 22);
             this.TbName.TabIndex = 0;
             // 
             // PbProductPicture
             // 
             this.PbProductPicture.BackColor = System.Drawing.Color.White;
             this.PbProductPicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PbProductPicture.Location = new System.Drawing.Point(14, 15);
-            this.PbProductPicture.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.PbProductPicture.Location = new System.Drawing.Point(12, 12);
             this.PbProductPicture.Name = "PbProductPicture";
-            this.PbProductPicture.Size = new System.Drawing.Size(299, 332);
+            this.PbProductPicture.Size = new System.Drawing.Size(266, 266);
             this.PbProductPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PbProductPicture.TabIndex = 1;
             this.PbProductPicture.TabStop = false;
@@ -69,46 +70,44 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 368);
+            this.label1.Location = new System.Drawing.Point(12, 294);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 20);
+            this.label1.Size = new System.Drawing.Size(44, 16);
             this.label1.TabIndex = 2;
             this.label1.Text = "naam:";
             // 
             // NumPrice
             // 
             this.NumPrice.DecimalPlaces = 2;
-            this.NumPrice.Location = new System.Drawing.Point(126, 400);
-            this.NumPrice.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.NumPrice.Location = new System.Drawing.Point(112, 320);
             this.NumPrice.Name = "NumPrice";
-            this.NumPrice.Size = new System.Drawing.Size(187, 26);
+            this.NumPrice.Size = new System.Drawing.Size(166, 22);
             this.NumPrice.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(14, 406);
+            this.label2.Location = new System.Drawing.Point(12, 325);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 20);
+            this.label2.Size = new System.Drawing.Size(32, 16);
             this.label2.TabIndex = 4;
             this.label2.Text = "prijs";
             // 
             // NumID
             // 
             this.NumID.Enabled = false;
-            this.NumID.Location = new System.Drawing.Point(126, 435);
-            this.NumID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.NumID.Location = new System.Drawing.Point(112, 348);
             this.NumID.Name = "NumID";
             this.NumID.ReadOnly = true;
-            this.NumID.Size = new System.Drawing.Size(187, 26);
+            this.NumID.Size = new System.Drawing.Size(166, 22);
             this.NumID.TabIndex = 5;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 442);
+            this.label3.Location = new System.Drawing.Point(12, 354);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 20);
+            this.label3.Size = new System.Drawing.Size(23, 16);
             this.label3.TabIndex = 6;
             this.label3.Text = "ID:";
             // 
@@ -116,10 +115,9 @@
             // 
             this.BtnCancle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BtnCancle.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BtnCancle.Location = new System.Drawing.Point(14, 525);
-            this.BtnCancle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.BtnCancle.Location = new System.Drawing.Point(12, 479);
             this.BtnCancle.Name = "BtnCancle";
-            this.BtnCancle.Size = new System.Drawing.Size(84, 29);
+            this.BtnCancle.Size = new System.Drawing.Size(75, 23);
             this.BtnCancle.TabIndex = 7;
             this.BtnCancle.Text = "cancel";
             this.BtnCancle.UseVisualStyleBackColor = true;
@@ -127,10 +125,9 @@
             // BtnSave
             // 
             this.BtnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnSave.Location = new System.Drawing.Point(210, 525);
-            this.BtnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.BtnSave.Location = new System.Drawing.Point(187, 479);
             this.BtnSave.Name = "BtnSave";
-            this.BtnSave.Size = new System.Drawing.Size(84, 29);
+            this.BtnSave.Size = new System.Drawing.Size(75, 23);
             this.BtnSave.TabIndex = 8;
             this.BtnSave.Text = "save";
             this.BtnSave.UseVisualStyleBackColor = true;
@@ -144,9 +141,9 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 471);
+            this.label4.Location = new System.Drawing.Point(12, 385);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(79, 20);
+            this.label4.Size = new System.Drawing.Size(67, 16);
             this.label4.TabIndex = 9;
             this.label4.Text = "categorie:";
             // 
@@ -154,16 +151,50 @@
             // 
             this.comboBoxCategories.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCategories.FormattingEnabled = true;
-            this.comboBoxCategories.Location = new System.Drawing.Point(126, 471);
+            this.comboBoxCategories.Location = new System.Drawing.Point(112, 377);
+            this.comboBoxCategories.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxCategories.Name = "comboBoxCategories";
-            this.comboBoxCategories.Size = new System.Drawing.Size(191, 28);
+            this.comboBoxCategories.Size = new System.Drawing.Size(170, 24);
             this.comboBoxCategories.TabIndex = 10;
+            // 
+            // checkBoxActive
+            // 
+            this.checkBoxActive.AutoSize = true;
+            this.checkBoxActive.Location = new System.Drawing.Point(12, 443);
+            this.checkBoxActive.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.checkBoxActive.Name = "checkBoxActive";
+            this.checkBoxActive.Size = new System.Drawing.Size(65, 20);
+            this.checkBoxActive.TabIndex = 11;
+            this.checkBoxActive.Text = "active";
+            this.checkBoxActive.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxPriceType
+            // 
+            this.comboBoxPriceType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxPriceType.FormattingEnabled = true;
+            this.comboBoxPriceType.Location = new System.Drawing.Point(113, 412);
+            this.comboBoxPriceType.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.comboBoxPriceType.Name = "comboBoxPriceType";
+            this.comboBoxPriceType.Size = new System.Drawing.Size(170, 24);
+            this.comboBoxPriceType.TabIndex = 13;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 412);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(60, 16);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "pijs type:";
             // 
             // ProductEditor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(322, 576);
+            this.ClientSize = new System.Drawing.Size(286, 520);
+            this.Controls.Add(this.comboBoxPriceType);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.checkBoxActive);
             this.Controls.Add(this.comboBoxCategories);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.BtnSave);
@@ -175,9 +206,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.PbProductPicture);
             this.Controls.Add(this.TbName);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(339, 522);
+            this.MinimumSize = new System.Drawing.Size(303, 427);
             this.Name = "ProductEditor";
             this.Text = "Product Editor";
             this.Load += new System.EventHandler(this.ProductEditor_Load);
@@ -203,5 +233,8 @@
         private System.Windows.Forms.OpenFileDialog openFileDialogimg;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboBoxCategories;
+        private System.Windows.Forms.CheckBox checkBoxActive;
+        private System.Windows.Forms.ComboBox comboBoxPriceType;
+        private System.Windows.Forms.Label label5;
     }
 }

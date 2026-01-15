@@ -26,10 +26,10 @@ namespace ClassLibraryDb
             }
         }
 
-        public List<Product> GetAllProducts()
+        public List<Product> GetAllActiveProducts()
         {
             List<Product> products = new List<Product>();
-            string query = "Select id, productName, price, Category_id, product_image, priceType FROM producten";
+            string query = "Select id, productName, price, Category_id, product_image, priceType FROM producten WHERE `active` = 1;";
             using (MySqlConnection conn = new MySqlConnection(_connectionString)) // using = auto-dispose for what the garbage collector ignores
             {
                 //conn.Open();
@@ -79,7 +79,7 @@ namespace ClassLibraryDb
                                 {
                                     id = reader.GetInt32("id"),
                                     ProductNaam = reader.GetString("productName"),
-                                    PriceType = reader.GetBoolean("priceType"),
+                                    PriceType = reader.GetInt32("priceType"),
                                     ProductPrijs = reader.GetDecimal("price"),
                                     ProductImage = image,
                                     categoryId = reader.GetInt32("Category_id"),
@@ -108,9 +108,10 @@ namespace ClassLibraryDb
                     `price` = @price,
                     `product_image` = @img,
                     `priceType` = @priceType,
-                    `Category_id` = @category
+                    `Category_id` = @category,
+                    `active` = @active
                 WHERE
-                    `id` = @id";
+                    `id` = @id;";
                 conn.Open();
                 using (MySqlCommand cmd = new MySqlCommand(query, conn))
                 {
@@ -129,6 +130,7 @@ namespace ClassLibraryDb
                     cmd.Parameters.Add(new MySqlParameter("@priceType", MySqlDbType.Int16) { Value = productdata.PriceType });
                     cmd.Parameters.Add(new MySqlParameter("@img", MySqlDbType.Blob) { Value = imageBytes });
                     cmd.Parameters.Add(new MySqlParameter("@category", MySqlDbType.Int32) { Value = productdata.categoryId });
+                    cmd.Parameters.Add(new MySqlParameter("@active", MySqlDbType.Int16) { Value = productdata.active });
 
                     foreach (MySqlParameter p in cmd.Parameters)
                         Console.WriteLine($"{p.ParameterName} = {p.Value}");
@@ -139,9 +141,9 @@ namespace ClassLibraryDb
             }
         }
 
-        public List<category> GetAllCategories()
+        public List<DropDownItem> GetAllCategories()
         {
-            List<category> categories = new List<category>();
+            List<DropDownItem> categories = new List<DropDownItem>();
             string query = "Select id, name FROM categories";
             using (MySqlConnection conn = new MySqlConnection(_connectionString)) // using = auto-dispose for what the garbage collector ignores
             {
@@ -161,7 +163,7 @@ namespace ClassLibraryDb
                             while (reader.Read())
                             {
 
-                                category category = new category()
+                                DropDownItem category = new DropDownItem()
                                 {
                                     Id = reader.GetInt32("id"),
                                     Name = reader.GetString("name"),
@@ -224,6 +226,104 @@ namespace ClassLibraryDb
                     Console.WriteLine($"{affectedRows} rij(en) geüpdatet.");
                 }
             }
+        }
+
+        public List<Product> GetAllProducts()
+        {
+            List<Product> products = new List<Product>();
+            string query = "Select id, productName, price, Category_id, product_image, priceType, `active` FROM producten;";
+            using (MySqlConnection conn = new MySqlConnection(_connectionString)) // using = auto-dispose for what the garbage collector ignores
+            {
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    conn.Open();
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (!reader.HasRows)
+                        {
+                            Console.WriteLine("geen producten gevonden");
+                            //LblOutput.Text = "Null";
+                        }
+                        else
+                        {
+                            while (reader.Read())
+                            {
+                                Image image = null;
+                                if (!reader.IsDBNull(reader.GetOrdinal("product_image")))
+                                {
+                                    byte[] imageBytes = (byte[])reader["product_image"];
+
+                                    //MemoryStream ms = new MemoryStream(imageBytes);
+                                    //Image = Image.FromStream(ms);
+
+                                    using (MemoryStream ms = new MemoryStream(imageBytes))
+                                    {
+                                        using (var img = Image.FromStream(ms))
+                                        {
+                                            image = new Bitmap(img);
+                                        }
+                                    }
+                                }
+
+                                Product product = new Product()
+                                {
+                                    id = reader.GetInt32("id"),
+                                    ProductNaam = reader.GetString("productName"),
+                                    PriceType = reader.GetInt32("priceType"),
+                                    ProductPrijs = reader.GetDecimal("price"),
+                                    ProductImage = image,
+                                    categoryId = reader.GetInt32("Category_id"),
+                                    active = reader.GetBoolean("active"),
+                                };
+                                products.Add(product);
+
+                            }
+                        }
+                    }
+                }
+
+            }
+            return products;
+        }
+
+        public List<DropDownItem> GetAllPriceTypes()
+        {
+            List<DropDownItem> priceTypes = new List<DropDownItem>();
+            string query = "Select id, type FROM pricetype";
+            using (MySqlConnection conn = new MySqlConnection(_connectionString)) // using = auto-dispose for what the garbage collector ignores
+            {
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    conn.Open();
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (!reader.HasRows)
+                        {
+                            Console.WriteLine("geen pricetypes gevonden");
+                            //LblOutput.Text = "Null";
+                        }
+                        else
+                        {
+                            while (reader.Read())
+                            {
+
+                                DropDownItem PriceType = new DropDownItem()
+                                {
+                                    Id = reader.GetInt32("id"),
+                                    Name = reader.GetString("type"),
+                                };
+                                priceTypes.Add(PriceType);
+
+                            }
+                        }
+                    }
+                }
+
+            }
+            return priceTypes;
         }
     }
 }
