@@ -1,0 +1,60 @@
+-- omzet per maand
+SELECT
+    MONTH(r.Timestamp) AS "maand",
+    SUM(rp.amount * rp.price_at_sale) AS "omzet"
+FROM
+    receipt_metadata r
+INNER JOIN receipt_products rp ON
+    r.id = rp.receipt_ID
+WHERE
+    YEAR(r.Timestamp) = 2026
+GROUP BY
+    MONTH(r.Timestamp) --format with .ToString("MMM", new CultureInfo("nl-NL"))
+ORDER BY
+    maand ASC;
+
+-- dagomzet in een maand
+SELECT
+    DAY(r.Timestamp) AS dag,
+    SUM(rp.amount * rp.price_at_sale) AS totaal_omzet_dag
+FROM
+    receipt_metadata r
+INNER JOIN receipt_products rp ON
+    r.id = rp.receipt_ID
+WHERE
+    YEAR(r.Timestamp) = 2026 AND MONTH(r.Timestamp) = 1
+GROUP BY
+    day(r.Timestamp)
+
+-- omzet per categorie
+SELECT
+    c.name AS categorie,
+    SUM(rp.amount * rp.price_at_sale) AS totaal_verkocht
+FROM
+    categories c
+LEFT JOIN producten p ON
+    p.Category_id = c.id
+LEFT JOIN receipt_products rp ON
+    rp.product_ID = p.id
+GROUP BY
+    c.id,
+    c.name
+ORDER BY
+    c.id ASC;
+
+-- best verkochten producten
+SELECT
+    p.productName,
+    rp.amount
+FROM
+    producten p
+LEFT JOIN receipt_products rp ON
+    rp.product_ID = p.id
+GROUP BY
+    rp.id
+ORDER BY
+    rp.amount
+DESC
+LIMIT 5;
+
+

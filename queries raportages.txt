@@ -1,0 +1,45 @@
+-- Average total spent per receipt
+SELECT AVG(receipt_total) AS AverageSpent
+FROM (
+    SELECT receipt_ID, SUM(amount * price_at_sale) AS receipt_total
+    FROM receipt_products
+    GROUP BY receipt_ID
+) AS receipt_totals;
+
+-- jaaroverzicht omzet
+SELECT
+    COUNT(r.id) AS total_receipts,                           -- Total amount of receipts
+    SUM(rp.amount * rp.price_at_sale) AS total_omzet         -- Total money spent
+    -- AVG(rp.amount * rp.price_at_sale) AS average_spent_per_receipt       -- Average spend per receipt
+FROM receipt_metadata r
+JOIN receipt_products rp ON rp.receipt_ID = r.id -- to get the year)
+WHERE YEAR(r.Timestamp) = @Year;
+-- calculate average here
+
+-- verkoop per products
+SELECT
+    p.productName,
+    SUM(`amount`) AS "totaal_verkocht",
+    SUM(`amount` * `price_at_sale`) AS "totaal_omzet"
+--also get price type to display well
+FROM
+    `receipt_products` rp
+INNER JOIN producten p ON
+    rp.product_ID = p.id
+GROUP BY
+    product_ID
+
+--drukste dagen
+SELECT
+    DATE(r.Timestamp),
+    SUM(rp.amount * rp.price_at_sale) AS totaal_omzet_dag
+FROM
+    receipt_metadata r
+INNER JOIN receipt_products rp ON
+    r.id = rp.receipt_ID
+GROUP BY
+    r.Timestamp
+ORDER BY
+    totaal_omzet_dag
+DESC
+LIMIT 5

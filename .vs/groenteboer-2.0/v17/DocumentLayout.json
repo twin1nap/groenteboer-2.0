@@ -3,16 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E7392F06-0DC6-4708-9F7E-2804746B495C}|ClassLibraryDb\\ClassLibraryDb.csproj|C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\classlibrarydb\\data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E7392F06-0DC6-4708-9F7E-2804746B495C}|ClassLibraryDb\\ClassLibraryDb.csproj|solutionrelative:classlibrarydb\\data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E7392F06-0DC6-4708-9F7E-2804746B495C}|ClassLibraryDb\\ClassLibraryDb.csproj|C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\classlibrarydb\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E7392F06-0DC6-4708-9F7E-2804746B495C}|ClassLibraryDb\\ClassLibraryDb.csproj|solutionrelative:classlibrarydb\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7392F06-0DC6-4708-9F7E-2804746B495C}|ClassLibraryDb\\ClassLibraryDb.csproj|C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\classlibrarydb\\models\\dropdownitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E7392F06-0DC6-4708-9F7E-2804746B495C}|ClassLibraryDb\\ClassLibraryDb.csproj|solutionrelative:classlibrarydb\\models\\dropdownitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9282730E-9DB7-45E7-AB7C-FFDF3DDC705D}|groenteboer app\\groenteboer app.csproj|C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\groenteboer app\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9282730E-9DB7-45E7-AB7C-FFDF3DDC705D}|groenteboer app\\groenteboer app.csproj|solutionrelative:groenteboer app\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E7392F06-0DC6-4708-9F7E-2804746B495C}|ClassLibraryDb\\ClassLibraryDb.csproj|C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\classlibrarydb\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E7392F06-0DC6-4708-9F7E-2804746B495C}|ClassLibraryDb\\ClassLibraryDb.csproj|solutionrelative:classlibrarydb\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{FC99E24F-E731-44D1-8825-A824F5F27F52}|Product maneger tool\\Product manegement tool.csproj|C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\product maneger tool\\formproductmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FC99E24F-E731-44D1-8825-A824F5F27F52}|Product maneger tool\\Product manegement tool.csproj|solutionrelative:product maneger tool\\formproductmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FC99E24F-E731-44D1-8825-A824F5F27F52}|Product maneger tool\\Product manegement tool.csproj|C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\product maneger tool\\formproductmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{FC99E24F-E731-44D1-8825-A824F5F27F52}|Product maneger tool\\Product manegement tool.csproj|solutionrelative:product maneger tool\\formproductmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E7392F06-0DC6-4708-9F7E-2804746B495C}|ClassLibraryDb\\ClassLibraryDb.csproj|c:\\users\\joran\\documents\\github\\groenteboer-2.0\\classlibrarydb\\data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E7392F06-0DC6-4708-9F7E-2804746B495C}|ClassLibraryDb\\ClassLibraryDb.csproj|solutionrelative:classlibrarydb\\data.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{FC99E24F-E731-44D1-8825-A824F5F27F52}|Product maneger tool\\Product manegement tool.csproj|C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\product maneger tool\\productpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -23,19 +35,7 @@
       "RelativeMoniker": "D:0:0:{9282730E-9DB7-45E7-AB7C-FFDF3DDC705D}|groenteboer app\\groenteboer app.csproj|solutionrelative:groenteboer app\\productpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E7392F06-0DC6-4708-9F7E-2804746B495C}|ClassLibraryDb\\ClassLibraryDb.csproj|C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\classlibrarydb\\models\\dropdownitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E7392F06-0DC6-4708-9F7E-2804746B495C}|ClassLibraryDb\\ClassLibraryDb.csproj|solutionrelative:classlibrarydb\\models\\dropdownitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FC99E24F-E731-44D1-8825-A824F5F27F52}|Product maneger tool\\Product manegement tool.csproj|C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\product maneger tool\\formproductmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{FC99E24F-E731-44D1-8825-A824F5F27F52}|Product maneger tool\\Product manegement tool.csproj|solutionrelative:product maneger tool\\formproductmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FC99E24F-E731-44D1-8825-A824F5F27F52}|Product maneger tool\\Product manegement tool.csproj|C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\product maneger tool\\formproductmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FC99E24F-E731-44D1-8825-A824F5F27F52}|Product maneger tool\\Product manegement tool.csproj|solutionrelative:product maneger tool\\formproductmanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FC99E24F-E731-44D1-8825-A824F5F27F52}|Product maneger tool\\Product manegement tool.csproj|c:\\users\\joran\\documents\\github\\groenteboer-2.0\\product maneger tool\\producteditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{FC99E24F-E731-44D1-8825-A824F5F27F52}|Product maneger tool\\Product manegement tool.csproj|C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\product maneger tool\\producteditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FC99E24F-E731-44D1-8825-A824F5F27F52}|Product maneger tool\\Product manegement tool.csproj|solutionrelative:product maneger tool\\producteditor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -58,11 +58,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "ProductPanel.cs",
               "DocumentMoniker": "C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\Product maneger tool\\ProductPanel.cs",
               "RelativeDocumentMoniker": "Product maneger tool\\ProductPanel.cs",
@@ -70,12 +70,11 @@
               "RelativeToolTip": "Product maneger tool\\ProductPanel.cs",
               "ViewState": "AgIAAC4AAAAAAAAAAAAYwDwAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T09:09:17.196Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-15T09:09:17.196Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "ProductPanel.cs",
               "DocumentMoniker": "C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\groenteboer app\\ProductPanel.cs",
               "RelativeDocumentMoniker": "groenteboer app\\ProductPanel.cs",
@@ -83,18 +82,17 @@
               "RelativeToolTip": "groenteboer app\\ProductPanel.cs",
               "ViewState": "AgIAADYAAAAAAAAAAAAYwDsAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T09:07:27.892Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-15T09:07:27.892Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "DropDownItem.cs",
               "DocumentMoniker": "C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\ClassLibraryDb\\models\\DropDownItem.cs",
               "RelativeDocumentMoniker": "ClassLibraryDb\\models\\DropDownItem.cs",
               "ToolTip": "C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\ClassLibraryDb\\models\\DropDownItem.cs",
               "RelativeToolTip": "ClassLibraryDb\\models\\DropDownItem.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-14T13:25:55.05Z",
               "EditorCaption": ""
@@ -108,8 +106,7 @@
               "ToolTip": "C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\groenteboer app\\ProductPanel.cs [Design]",
               "RelativeToolTip": "groenteboer app\\ProductPanel.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-14T11:59:35.76Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2026-01-14T11:59:35.76Z"
             },
             {
               "$type": "Document",
@@ -120,8 +117,7 @@
               "ToolTip": "C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\Product maneger tool\\ProductEditor.cs [Design]",
               "RelativeToolTip": "Product maneger tool\\ProductEditor.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-14T10:54:48.198Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2026-01-14T10:54:48.198Z"
             },
             {
               "$type": "Document",
@@ -133,25 +129,24 @@
               "RelativeToolTip": "Product maneger tool\\ProductEditor.cs",
               "ViewState": "AgIAAEQAAAAAAAAAAAAYwH8AAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-14T09:41:08.837Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-14T09:41:08.837Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 3,
               "Title": "FormProductManagement.cs",
               "DocumentMoniker": "C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\Product maneger tool\\FormProductManagement.cs",
               "RelativeDocumentMoniker": "Product maneger tool\\FormProductManagement.cs",
               "ToolTip": "C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\Product maneger tool\\FormProductManagement.cs",
               "RelativeToolTip": "Product maneger tool\\FormProductManagement.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAcwCoAAAApAAAAAAAAAA==",
+              "ViewState": "AgIAABAAAAAAAAAAAAAIwCoAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-13T18:24:02.935Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
               "Title": "FormProductManagement.cs [Design]",
               "DocumentMoniker": "C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\Product maneger tool\\FormProductManagement.cs",
               "RelativeDocumentMoniker": "Product maneger tool\\FormProductManagement.cs",
@@ -163,39 +158,39 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Product.cs",
               "DocumentMoniker": "C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\ClassLibraryDb\\models\\Product.cs",
               "RelativeDocumentMoniker": "ClassLibraryDb\\models\\Product.cs",
               "ToolTip": "C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\ClassLibraryDb\\models\\Product.cs",
               "RelativeToolTip": "ClassLibraryDb\\models\\Product.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAASAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-13T15:22:31.515Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "data.cs",
               "DocumentMoniker": "C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\ClassLibraryDb\\data.cs",
               "RelativeDocumentMoniker": "ClassLibraryDb\\data.cs",
-              "ToolTip": "C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\ClassLibraryDb\\data.cs*",
-              "RelativeToolTip": "ClassLibraryDb\\data.cs*",
-              "ViewState": "AgIAAFoBAAAAAAAAAAAAwHIBAABMAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\ClassLibraryDb\\data.cs",
+              "RelativeToolTip": "ClassLibraryDb\\data.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAQwJoBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-13T13:09:56.299Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\groenteboer app\\Form1.cs",
               "RelativeDocumentMoniker": "groenteboer app\\Form1.cs",
               "ToolTip": "C:\\Users\\joran\\Documents\\GitHub\\groenteboer-2.0\\groenteboer app\\Form1.cs",
               "RelativeToolTip": "groenteboer app\\Form1.cs",
-              "ViewState": "AgIAAF4AAAAAAAAAAAAgwI4AAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAH8AAAAAAAAAAAAiwI4AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-13T12:38:19.239Z",
               "EditorCaption": ""

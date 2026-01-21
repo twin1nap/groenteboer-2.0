@@ -309,7 +309,6 @@ namespace ClassLibraryDb
                         {
                             while (reader.Read())
                             {
-
                                 DropDownItem PriceType = new DropDownItem()
                                 {
                                     Id = reader.GetInt32("id"),
@@ -392,8 +391,8 @@ namespace ClassLibraryDb
 // QUERY RECEIPT:
 
 //--Get all products for a specific receipt, with total price and price type text
-//SELECT 
-//    rp.receipt_ID,                             -- The receipt ID
+//SELECT
+//    rp.receipt_ID,                             --The receipt ID
 //    p.productName AS Product,                  -- Product name instead of product ID
 //    rp.amount,                                 -- Quantity purchased
 //    rp.price_at_sale AS PricePerUnit,          -- Price at the time of sale
