@@ -1,10 +1,12 @@
 ﻿using ClassLibraryDb.models;
+using ClassLibraryDb.models.dashboard;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -376,13 +378,181 @@ namespace ClassLibraryDb
                         cmd.Parameters.Add(new MySqlParameter("@price", MySqlDbType.Decimal) { Value = product.Key.ProductPrijs });
                         cmd.Parameters.Add(new MySqlParameter("@priceType", MySqlDbType.Int16) { Value = product.Key.PriceType });
 
-                        foreach (MySqlParameter p in cmd.Parameters)
-                            Console.WriteLine($"{p.ParameterName} = {p.Value}");
+                        //foreach (MySqlParameter p in cmd.Parameters)
+                        //    Console.WriteLine($"{p.ParameterName} = {p.Value}");
 
                         int affectedRows = cmd.ExecuteNonQuery();
                         Console.WriteLine($"{affectedRows} rij(en) geüpdatet.");
                     }
                 }
+            }
+        }
+
+        // raportages and grafieken get:
+        public List<AverageAmountSpend> GetAverageAmountSpend()
+        {
+            List<AverageAmountSpend> averageAmountSpends = new List<AverageAmountSpend>();
+            string query = @"
+            SELECT AVG(receipt_total) AS AverageSpent
+            FROM (
+                SELECT receipt_ID, SUM(amount * price_at_sale) AS receipt_total
+                FROM receipt_products
+                GROUP BY receipt_ID
+            ) AS receipt_totals;
+";
+            using (MySqlConnection conn = new MySqlConnection(_connectionString)) // using = auto-dispose for what the garbage collector ignores
+            {
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    conn.Open();
+                    AverageAmountSpend averageAmountSpend = new AverageAmountSpend()
+                    {
+                        omschrijving = "gemiddeld bedrag per verkoop(€)",
+                        amount = (decimal)cmd.ExecuteScalar()
+                    };
+                    averageAmountSpends.Add(averageAmountSpend);
+                }
+                return averageAmountSpends;
+
+            }
+        }
+        public List<AnnualTurnoverOverview> GetAnnualTurnoverOverview(int year)
+        {
+            List<AnnualTurnoverOverview> annualTurnoverOverviews = new List<AnnualTurnoverOverview>();
+            string query = @"
+            SELECT
+                COUNT(r.id) AS total_receipts,                           -- Total amount of receipts
+                SUM(rp.amount * rp.price_at_sale) AS total_omzet         -- Total money spent
+                -- AVG(rp.amount * rp.price_at_sale) AS average_spent_per_receipt       -- Average spend per receipt
+            FROM receipt_metadata r
+            JOIN receipt_products rp ON rp.receipt_ID = r.id -- to get the year)
+            WHERE YEAR(r.Timestamp) = @Year;
+";
+            using (MySqlConnection conn = new MySqlConnection(_connectionString)) // using = auto-dispose for what the garbage collector ignores
+            {
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.Add(new MySqlParameter("@Year", MySqlDbType.Int32) { Value = year });
+                    conn.Open();
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (!reader.HasRows)
+                        {
+                            Console.WriteLine("geen producten gevonden");
+                            //LblOutput.Text = "Null";
+                        }
+                        else
+                        {
+                            while (reader.Read())
+                            {
+                                AnnualTurnoverOverview annualTurnoverOverview = new AnnualTurnoverOverview()
+                                {
+                                    Totaal_aantal_verkopen = reader.GetInt32("total_receipts"),
+                                    Totale_jaaromzet = reader.GetDecimal("total_omzet"),
+                                    Gemiddelde_omzet_per_verkoop = GetAverageAmountSpend()[0].amount
+                                };
+                                annualTurnoverOverviews.Add(annualTurnoverOverview);
+                            }
+                        }
+                    }
+                }
+                return annualTurnoverOverviews;
+
+            }
+        }
+        public List<SalesPerProduct> GetSalesPerProduct()
+        {
+            List<SalesPerProduct> salesPerProducts = new List<SalesPerProduct>();
+            string query = @"
+            SELECT
+                p.productName,
+                SUM(`amount`) AS ""totaal_verkocht"",
+                SUM(`amount` * `price_at_sale`) AS ""totaal_omzet""
+            -- also get price type to display well
+            FROM
+                `receipt_products` rp
+            INNER JOIN producten p ON
+                rp.product_ID = p.id
+            GROUP BY
+                product_ID
+";
+            using (MySqlConnection conn = new MySqlConnection(_connectionString)) // using = auto-dispose for what the garbage collector ignores
+            {
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    conn.Open();
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (!reader.HasRows)
+                        {
+                            Console.WriteLine("geen producten gevonden");
+                            //LblOutput.Text = "Null";
+                        }
+                        else
+                        {
+                            while (reader.Read())
+                            {
+                                SalesPerProduct salesPerProduct = new SalesPerProduct()
+                                {
+                                    product = reader.GetString("productName"),
+                                    Totaal_Verkocht = reader.GetDecimal("totaal_verkocht"),
+                                    Totale_omzet = reader.GetDecimal("totaal_omzet")
+                                };
+                                salesPerProducts.Add(salesPerProduct);
+                            }
+                        }
+                    }
+                }
+                return salesPerProducts;
+
+            }
+        }
+        public List<BusiestDay> GetBusiestDays()
+        {
+            List<BusiestDay> busiestDays = new List<BusiestDay>();
+            string query = @"
+            SELECT
+                DATE(r.Timestamp) as ""date"",
+                SUM(rp.amount * rp.price_at_sale) AS totaal_omzet_dag
+            FROM
+                receipt_metadata r
+            INNER JOIN receipt_products rp ON
+                r.id = rp.receipt_ID
+            GROUP BY
+                DATE(r.Timestamp)
+            ORDER BY
+                totaal_omzet_dag
+            DESC
+            LIMIT 5
+";
+            using (MySqlConnection conn = new MySqlConnection(_connectionString)) // using = auto-dispose for what the garbage collector ignores
+            {
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    conn.Open();
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (!reader.HasRows)
+                        {
+                            Console.WriteLine("geen producten gevonden");
+                            //LblOutput.Text = "Null";
+                        }
+                        else
+                        {
+                            while (reader.Read())
+                            {
+                                BusiestDay busiestDay = new BusiestDay()
+                                { 
+                                    Datum = reader.GetDateTime("date"),
+                                    Totale_omzet = reader.GetDecimal("totaal_omzet_dag")
+                                };
+                                busiestDays.Add(busiestDay);
+                            }
+                        }
+                    }
+                }
+                return busiestDays;
+
             }
         }
     }

@@ -1,5 +1,6 @@
 ﻿using ClassLibraryDb;
 using ClassLibraryDb.models;
+using ClassLibraryDb.models.dashboard;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -55,6 +56,23 @@ namespace Product_maneger_tool
             BtnNew.Click += BtnNew_Click;
             FlpProducts.Controls.Add(BtnNew);
 
+            // dashboard
+
+            //List<AverageAmountSpend> averageAmountSpends= new List<AverageAmountSpend>();
+            //averageAmountSpends = db.GetAverageAmountSpend();
+            //dataGridViewRaportages.DataSource = averageAmountSpends;
+
+            //List<AnnualTurnoverOverview> annualTurnoverOverviews = new List<AnnualTurnoverOverview>();
+            //annualTurnoverOverviews = db.GetAnnualTurnoverOverview(2026);
+            //dataGridViewRaportages.DataSource = annualTurnoverOverviews;
+
+            //List<SalesPerProduct> salesPerProducts = new List<SalesPerProduct>();
+            //salesPerProducts = db.GetSalesPerProduct();
+            //dataGridViewRaportages.DataSource = salesPerProducts;
+
+            List<BusiestDay> busiestDays = new List<BusiestDay>();
+            busiestDays = db.GetBusiestDays();
+            dataGridViewRaportages.DataSource = busiestDays;
         }
 
         private void button_Product_Click(object sender, EventArgs e)
@@ -85,6 +103,11 @@ namespace Product_maneger_tool
                 //DataRequest("Select * FROM producten");
                 LoadData();
             }
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }

@@ -95,6 +95,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="data.cs" />
+    <Compile Include="models\dashboard\AnnualTurnoverOverview.cs" />
+    <Compile Include="models\dashboard\AverageAmountSpend.cs" />
+    <Compile Include="models\dashboard\BusiestDay.cs" />
+    <Compile Include="models\dashboard\SalesPerProduct.cs" />
     <Compile Include="models\DropDownItem.cs" />
     <Compile Include="models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -103,5 +107,6 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

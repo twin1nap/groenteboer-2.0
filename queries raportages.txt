@@ -38,7 +38,7 @@ FROM
 INNER JOIN receipt_products rp ON
     r.id = rp.receipt_ID
 GROUP BY
-    r.Timestamp
+    DATE(r.Timestamp)
 ORDER BY
     totaal_omzet_dag
 DESC
