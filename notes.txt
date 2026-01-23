@@ -22,6 +22,7 @@ upgrade receipt:
 	Using a receipt ID, an existing receipt can be loaded, its products can be reviewed, modified, or removed, and the updated receipt can then be saved back to the database.
 	'''
 comment all old code
+fix all small front end problems commented where comment says what to do.
 
 planning:
 	dag 14-01-2026:	product management(currently called product manager) full crud & new standard.

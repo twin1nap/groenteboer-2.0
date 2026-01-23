@@ -101,6 +101,8 @@
     <Compile Include="FormProductManagement.Designer.cs">
       <DependentUpon>FormProductManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\DashboardComboBoxItem.cs" />
+    <Compile Include="Models\TableSettings.cs" />
     <Compile Include="ProductEditor.cs">
       <SubType>Form</SubType>
     </Compile>

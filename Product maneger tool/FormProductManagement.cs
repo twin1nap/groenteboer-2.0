@@ -1,6 +1,8 @@
 ﻿using ClassLibraryDb;
 using ClassLibraryDb.models;
 using ClassLibraryDb.models.dashboard;
+using groenteboer_app.models;
+using Product_maneger_tool.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -57,22 +59,106 @@ namespace Product_maneger_tool
             FlpProducts.Controls.Add(BtnNew);
 
             // dashboard
+            List<DashboardComboBoxItem> dashboardComboBoxItems = new List<DashboardComboBoxItem>();
 
-            //List<AverageAmountSpend> averageAmountSpends= new List<AverageAmountSpend>();
-            //averageAmountSpends = db.GetAverageAmountSpend();
+            // Gemiddeld bedrag per verkoop
+            List<AverageAmountSpend> averageAmountSpends = new List<AverageAmountSpend>();
+            averageAmountSpends = db.GetAverageAmountSpend();
+            DashboardComboBoxItem _AverageAmountSpend = new DashboardComboBoxItem()
+            {
+                ItemName = "Gemiddeld bedrag per verkoop",
+                TableSettings = new TableSettings()
+                {
+                    DataSource = averageAmountSpends,
+                    Columns = new List<DataGridViewTextBoxColumn>
+                    {
+                        new DataGridViewTextBoxColumn()
+                        {
+                            HeaderText = averageAmountSpends[0].omschrijving,
+                            DataPropertyName = "amount"
+                        } //automate this
+                    },
+                    readOnly = true
+                }
+            };
+            dashboardComboBoxItems.Add(_AverageAmountSpend);
             //dataGridViewRaportages.DataSource = averageAmountSpends;
 
-            //List<AnnualTurnoverOverview> annualTurnoverOverviews = new List<AnnualTurnoverOverview>();
-            //annualTurnoverOverviews = db.GetAnnualTurnoverOverview(2026);
+            List<AnnualTurnoverOverview> annualTurnoverOverviews = new List<AnnualTurnoverOverview>();
+            annualTurnoverOverviews = db.GetAnnualTurnoverOverview(2026);
+            DashboardComboBoxItem _annualTurnoverOverviews = new DashboardComboBoxItem()
+            {
+                ItemName = "Gemiddeld bedrag per verkoop",
+                TableSettings = new TableSettings()
+                {
+                    DataSource = annualTurnoverOverviews,
+                    Columns = new List<DataGridViewTextBoxColumn> //change source object so there is an omschrijving and Waarde
+                    {
+                        new DataGridViewTextBoxColumn()
+                        {
+                            HeaderText = "Totaal aantal verkopen",
+                            DataPropertyName = "Totaal_aantal_verkopen"
+                        },
+                        new DataGridViewTextBoxColumn()
+                        {
+                            HeaderText = "Totale jaaromzet (€)",
+                            DataPropertyName = "Totale_jaaromzet" //add string formatting
+                        },
+                        new DataGridViewTextBoxColumn()
+                        {
+                            HeaderText = "Gemiddelde omzet per verkoop",
+                            DataPropertyName = "Gemiddelde_omzet_per_verkoop" //add string formatting
+                        } 
+                        //automate this
+                    },
+                    readOnly = true
+                }
+            };
+            dashboardComboBoxItems.Add(_annualTurnoverOverviews);
             //dataGridViewRaportages.DataSource = annualTurnoverOverviews;
 
-            //List<SalesPerProduct> salesPerProducts = new List<SalesPerProduct>();
-            //salesPerProducts = db.GetSalesPerProduct();
-            //dataGridViewRaportages.DataSource = salesPerProducts;
+            List<SalesPerProduct> salesPerProducts = new List<SalesPerProduct>();
+            salesPerProducts = db.GetSalesPerProduct();
+            DashboardComboBoxItem __annualTurnoverOverviews = new DashboardComboBoxItem()
+            {
+                ItemName = "Gemiddeld bedrag per verkoop",
+                TableSettings = new TableSettings()
+                {
+                    DataSource = annualTurnoverOverviews,
+                    Columns = new List<DataGridViewTextBoxColumn> //change source object so there is an omschrijving and Waarde
+                    {
+                        new DataGridViewTextBoxColumn()
+                        {
+                            HeaderText = "Totaal aantal verkopen",
+                            DataPropertyName = "Totaal_aantal_verkopen"
+                        },
+                        new DataGridViewTextBoxColumn()
+                        {
+                            HeaderText = "Totale jaaromzet (€)",
+                            DataPropertyName = "Totale_jaaromzet" //add string formatting
+                        },
+                        new DataGridViewTextBoxColumn()
+                        {
+                            HeaderText = "Gemiddelde omzet per verkoop",
+                            DataPropertyName = "Gemiddelde_omzet_per_verkoop" //add string formatting
+                        } 
+                        //automate this
+                    },
+                    readOnly = true
+                }
+            };
+            dashboardComboBoxItems.Add(_annualTurnoverOverviews);
+            dataGridViewRaportages.DataSource = salesPerProducts;
 
-            List<BusiestDay> busiestDays = new List<BusiestDay>();
-            busiestDays = db.GetBusiestDays();
-            dataGridViewRaportages.DataSource = busiestDays;
+            //List<BusiestDay> busiestDays = new List<BusiestDay>();
+            //busiestDays = db.GetBusiestDays();
+            //dataGridViewRaportages.DataSource = busiestDays;
+
+            //dataGridViewRaportages.Columns =
+
+            //comboBoxRaportages.DataSource = dashboardComboBoxItems;
+            //comboBoxRaportages.DisplayMember = "ItemName";
+            ////comboBoxRaportages.ValueMember = "TableSettings";
         }
 
         private void button_Product_Click(object sender, EventArgs e)
@@ -108,6 +194,22 @@ namespace Product_maneger_tool
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadData();
+        }
+
+        private void comboBoxRaportages_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // add keep selected index
+            dataGridViewRaportages.AutoGenerateColumns = false;
+            dataGridViewRaportages.Columns.Clear();
+
+            DashboardComboBoxItem selectedItem = (DashboardComboBoxItem)comboBoxRaportages.SelectedItem;
+            TableSettings SelectedTableSettings = selectedItem.TableSettings;
+            foreach (DataGridViewTextBoxColumn column in SelectedTableSettings.Columns)
+            {
+                dataGridViewRaportages.Columns.Add(column);
+            }
+            dataGridViewRaportages.DataSource = SelectedTableSettings.DataSource;
+            dataGridViewRaportages.ReadOnly = SelectedTableSettings.readOnly;
         }
     }
 }
