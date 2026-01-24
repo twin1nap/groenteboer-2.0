@@ -119,46 +119,66 @@ namespace Product_maneger_tool
 
             List<SalesPerProduct> salesPerProducts = new List<SalesPerProduct>();
             salesPerProducts = db.GetSalesPerProduct();
-            DashboardComboBoxItem __annualTurnoverOverviews = new DashboardComboBoxItem()
+            DashboardComboBoxItem _salesPerProducts = new DashboardComboBoxItem()
             {
-                ItemName = "Gemiddeld bedrag per verkoop",
+                ItemName = "Verkoop per product",
                 TableSettings = new TableSettings()
                 {
-                    DataSource = annualTurnoverOverviews,
-                    Columns = new List<DataGridViewTextBoxColumn> //change source object so there is an omschrijving and Waarde
+                    DataSource = salesPerProducts,
+                    Columns = new List<DataGridViewTextBoxColumn>
                     {
                         new DataGridViewTextBoxColumn()
                         {
-                            HeaderText = "Totaal aantal verkopen",
-                            DataPropertyName = "Totaal_aantal_verkopen"
+                            HeaderText = "Product",
+                            DataPropertyName = "product"
                         },
                         new DataGridViewTextBoxColumn()
                         {
-                            HeaderText = "Totale jaaromzet (€)",
-                            DataPropertyName = "Totale_jaaromzet" //add string formatting
+                            HeaderText = "Totaal Verkocht",
+                            DataPropertyName = "Totaal_Verkocht"
                         },
                         new DataGridViewTextBoxColumn()
                         {
-                            HeaderText = "Gemiddelde omzet per verkoop",
-                            DataPropertyName = "Gemiddelde_omzet_per_verkoop" //add string formatting
+                            HeaderText = "Totale omzet (€)",
+                            DataPropertyName = "Totale_omzet" //add string formatting
                         } 
-                        //automate this
                     },
                     readOnly = true
                 }
             };
-            dashboardComboBoxItems.Add(_annualTurnoverOverviews);
-            dataGridViewRaportages.DataSource = salesPerProducts;
+            dashboardComboBoxItems.Add(_salesPerProducts);
+            //dataGridViewRaportages.DataSource = salesPerProducts;
 
-            //List<BusiestDay> busiestDays = new List<BusiestDay>();
-            //busiestDays = db.GetBusiestDays();
+            List<BusiestDay> busiestDays = new List<BusiestDay>();
+            busiestDays = db.GetBusiestDays();
+            DashboardComboBoxItem _busiestDays = new DashboardComboBoxItem()
+            {
+                ItemName = "Drukste dagen",
+                TableSettings = new TableSettings()
+                {
+                    DataSource = busiestDays,
+                    Columns = new List<DataGridViewTextBoxColumn>
+                    {
+                        new DataGridViewTextBoxColumn()
+                        {
+                            HeaderText = "Datum",
+                            DataPropertyName = "Datum" //make english variables now that columns are created
+                        },
+                        new DataGridViewTextBoxColumn()
+                        {
+                            HeaderText = "Totale omzet (€)",
+                            DataPropertyName = "Totale_omzet" //add string formatting
+                        }
+                    },
+                    readOnly = true
+                }
+            };
+            dashboardComboBoxItems.Add(_busiestDays);
             //dataGridViewRaportages.DataSource = busiestDays;
 
-            //dataGridViewRaportages.Columns =
-
-            //comboBoxRaportages.DataSource = dashboardComboBoxItems;
-            //comboBoxRaportages.DisplayMember = "ItemName";
-            ////comboBoxRaportages.ValueMember = "TableSettings";
+            comboBoxRaportages.DataSource = dashboardComboBoxItems;
+            comboBoxRaportages.DisplayMember = "ItemName";
+            //comboBoxRaportages.ValueMember = "TableSettings";
         }
 
         private void button_Product_Click(object sender, EventArgs e)

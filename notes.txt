@@ -23,6 +23,8 @@ upgrade receipt:
 	'''
 comment all old code
 fix all small front end problems commented where comment says what to do.
+make all objects for dashboard the same main layout.
+add full cultural aweareness.
 
 planning:
 	dag 14-01-2026:	product management(currently called product manager) full crud & new standard.
