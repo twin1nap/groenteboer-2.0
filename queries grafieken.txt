@@ -9,7 +9,7 @@ INNER JOIN receipt_products rp ON
 WHERE
     YEAR(r.Timestamp) = 2026
 GROUP BY
-    MONTH(r.Timestamp) --format with .ToString("MMM", new CultureInfo("nl-NL"))
+    MONTH(r.Timestamp) -- format with .ToString("MMM", new CultureInfo("nl-NL"))
 ORDER BY
     maand ASC;
 
@@ -45,16 +45,15 @@ ORDER BY
 -- best verkochten producten
 SELECT
     p.productName,
-    rp.amount
+    sum(rp.amount) as "amount"
 FROM
     producten p
-LEFT JOIN receipt_products rp ON
+inner JOIN receipt_products rp ON
     rp.product_ID = p.id
 GROUP BY
-    rp.id
+    p.productName
 ORDER BY
-    rp.amount
+    amount
 DESC
 LIMIT 5;
-
 

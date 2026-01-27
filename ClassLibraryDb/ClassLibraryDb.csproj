@@ -97,8 +97,12 @@
     <Compile Include="data.cs" />
     <Compile Include="models\dashboard\AnnualTurnoverOverview.cs" />
     <Compile Include="models\dashboard\AverageAmountSpend.cs" />
+    <Compile Include="models\dashboard\BestSellingProduct.cs" />
     <Compile Include="models\dashboard\BusiestDay.cs" />
+    <Compile Include="models\dashboard\CategoryTurnover.cs" />
+    <Compile Include="models\dashboard\DailyTurnoverInMonth.cs" />
     <Compile Include="models\dashboard\SalesPerProduct.cs" />
+    <Compile Include="models\dashboard\TurnoverPerMonth.cs" />
     <Compile Include="models\DropDownItem.cs" />
     <Compile Include="models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -9,10 +9,12 @@ namespace groenteboer_app.models
 {
     public class TableSettings
     {   
+        //setings could just be an object of the table
         public object DataSource { get; set; }
 
         //other settings here
         public List<DataGridViewTextBoxColumn> Columns { get; set; }
         public bool readOnly { get; set; }
+        public bool YearFilter { get; set; }
     }
 }
